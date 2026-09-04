@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clipwell — Privacy Policy</title>
+    <meta name="description" content="Privacy policy for Clipwell. No telemetry, on-device storage, Stripe checkout on Stripe, no DRM unwrap." />
+    <style>
+      :root { --ink:#1a1f1c; --muted:#5c675f; --forest:#1f6b58; --paper:#f7f4ee; --line:#d9d2c4; }
+      * { box-sizing: border-box; }
+      body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif; }
+      header { background:var(--forest); color:#f4f7f5; padding:2.25rem 1.25rem 2rem; }
+      header .wrap, main { max-width:46rem; margin:0 auto; }
+      header h1 { margin:0; font-size:1.7rem; font-weight:650; letter-spacing:-0.02em; }
+      header p { margin:0.4rem 0 0; color:#d7ebe4; font-size:0.95rem; }
+      main { padding:2rem 1.25rem 4rem; }
+      h2 { font-size:1.12rem; margin:2rem 0 0.6rem; }
+      .lede { font-size:1.05rem; }
+      .updated { color:var(--muted); font-size:0.9rem; margin:0 0 1.25rem; }
+      ul { padding-left:1.2rem; }
+      li { margin:0.35rem 0; }
+      code { font-size:0.9em; background:#efe8da; padding:0.05rem 0.3rem; border-radius:4px; }
+      a { color:var(--forest); }
+      footer { margin-top:2.5rem; padding-top:1rem; border-top:1px solid var(--line); color:var(--muted); font-size:0.9rem; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <h1>Privacy Policy for Clipwell</h1>
+        <p>On-device media detection. No telemetry. No tracking.</p>
+      </div>
+    </header>
+    <main>
+      <p class="updated">Last updated: September 4, 2026</p>
+      <p class="lede">Clipwell (“we”, “our”, or “the extension”) is a browser extension that helps you detect and organize media already loaded by your active browser tab. Clipwell is built to run entirely on your device with zero data collection, zero telemetry, and zero tracking.</p>
+      <h2>1. Zero data collection</h2>
+      <p>Clipwell does not collect, record, transmit, or sell any personal data.</p>
+      <ul>
+        <li>We do not collect names, email addresses, IP addresses, physical addresses, or user identifiers.</li>
+        <li>We do not collect or transmit your browsing history, page contents, bookmarks, or downloaded files.</li>
+        <li>We do not run remote analytics, usage tracking, error telemetry, or third-party SDKs.</li>
+      </ul>
+      <h2>2. How permissions are used locally</h2>
+      <p>All permissions requested by Clipwell are used only on your machine to provide the extension’s features:</p>
+      <ul>
+        <li><strong>Storage (<code>chrome.storage</code>):</strong> Saves preferences locally. Chrome Sync may copy them across your own profile. Later and Favourites stay in <code>chrome.storage.local</code>. The queue uses <code>chrome.storage.session</code>. Nothing is sent to our servers.</li>
+        <li><strong>Downloads (<code>chrome.downloads</code>):</strong> Save, pause, resume, and cancel through Chrome’s download manager.</li>
+        <li><strong>Network observation (<code>chrome.webRequest</code>):</strong> Reads response <code>Content-Type</code> headers to find media. No request bodies, forms, cookies, or credentials.</li>
+        <li><strong>Tabs (<code>chrome.tabs</code>):</strong> Title and URL of the active tab for card titles, filenames, and site rules.</li>
+        <li><strong>Side Panel (<code>chrome.sidePanel</code>):</strong> Renders the Clipwell UI in Chrome’s side panel.</li>
+        <li><strong>Offscreen document (<code>chrome.offscreen</code>):</strong> Assembles unencrypted HLS segments in the browser.</li>
+        <li><strong>Host permissions (<code>&lt;all_urls&gt;</code>):</strong> Detection and assembly on pages you open. Not on background sites you did not visit.</li>
+      </ul>
+      <h2>3. Third-party services and remote code</h2>
+      <p>Clipwell does not load remote code. All logic is bundled in the extension package. Normal use does not call our servers. Clipwell Plus checkout is handled by Stripe on Stripe’s site. We do not store or see card details.</p>
+      <p>Clipwell does not unwrap DRM (Widevine, FairPlay, PlayReady) or encrypted HLS (<code>#EXT-X-KEY</code>). Protected items are marked and cannot be saved.</p>
+      <h2>4. Data sharing and disclosure</h2>
+      <p>Because Clipwell collects zero data, we do not share, transfer, disclose, or sell user information.</p>
+      <h2>5. Children’s privacy</h2>
+      <p>Clipwell does not collect personal information from anyone, including children under 13.</p>
+      <h2>6. Changes to this policy</h2>
+      <p>If we change this policy, the revised version is published with a new date.</p>
+      <h2>7. Contact</h2>
+      <p>Questions: <a href="mailto:andreas.nelvik.engebretsen@gmail.com">andreas.nelvik.engebretsen@gmail.com</a> or the <a href="https://github.com/AndreasNE89/clipwell">project repository</a>.</p>
+      <footer>Public Chrome Web Store privacy policy for Clipwell. Source: <code>docs/privacy-policy.html</code> in the Clipwell repo.</footer>
+    </main>
+  </body>
+</html>
