@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="robots" content="noindex" />
+    <title>Clipwell Plus — Thanks</title>
+    <meta name="description" content="Your Clipwell Plus purchase. Copy your Plus code to unlock Plus on up to 3 devices." />
+    <style>
+      :root { --ink:#1a1f1c; --muted:#5c675f; --forest:#1f6b58; --paper:#f7f4ee; --line:#d9d2c4; --card:#fffdf8; }
+      * { box-sizing: border-box; }
+      body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif; }
+      header { background:var(--forest); color:#f4f7f5; padding:2.25rem 1rem 2rem; }
+      header .wrap, main { max-width:40rem; margin:0 auto; }
+      header h1 { margin:0; font-size:1.7rem; font-weight:650; letter-spacing:-0.02em; }
+      header p { margin:0.4rem 0 0; color:#d7ebe4; font-size:0.95rem; }
+      main { padding:2rem 1rem 4rem; }
+      h2 { font-size:1.12rem; margin:2rem 0 0.6rem; }
+      .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:1.1rem; }
+      .code-row { display:flex; gap:0.5rem; flex-wrap:wrap; }
+      .code { flex:1 1 16rem; min-width:0; font:0.9rem/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; background:#efe8da; border:1px solid var(--line); border-radius:8px; padding:0.6rem 0.7rem; overflow-wrap:anywhere; user-select:all; }
+      button { font:inherit; background:var(--forest); color:#fff; border:0; border-radius:8px; padding:0.6rem 1rem; cursor:pointer; }
+      button:focus-visible { outline:3px solid #9fd3c3; outline-offset:2px; }
+      .muted { color:var(--muted); font-size:0.95rem; }
+      ol { padding-left:1.3rem; }
+      li { margin:0.35rem 0; }
+      a { color:var(--forest); }
+      footer { margin-top:2.5rem; padding-top:1rem; border-top:1px solid var(--line); color:var(--muted); font-size:0.9rem; }
+      [hidden] { display:none !important; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <h1>Thanks for getting Clipwell Plus</h1>
+        <p>A one-time purchase. No account, no subscription.</p>
+      </div>
+    </header>
+    <main>
+      <section id="with-code" hidden>
+        <p>Clipwell unlocks Plus by itself in the browser you paid from, usually within a few seconds. You can close this page once Settings shows Plus is on.</p>
+        <h2>Your Plus code</h2>
+        <div class="card">
+          <div class="code-row">
+            <div class="code" id="code"></div>
+            <button type="button" id="copy">Copy code</button>
+          </div>
+          <p class="muted" id="copied" role="status" aria-live="polite"></p>
+        </div>
+        <p class="muted">Keep this code. One code unlocks Plus on up to 3 devices. Clipwell also shows it later under Settings, Plus.</p>
+        <h2>Unlock another device</h2>
+        <ol>
+          <li>Install Clipwell in that browser.</li>
+          <li>Open Clipwell, then Settings, then Plus.</li>
+          <li>Paste the code under <strong>Already paid on another device?</strong> and choose <strong>Restore Plus</strong>.</li>
+        </ol>
+        <p class="muted">If Plus didn't unlock here, paste the code the same way in this browser.</p>
+      </section>
+      <section id="no-code" hidden>
+        <p>This page shows your Plus code right after checkout. It looks like you opened it without one.</p>
+        <p>If you already paid, open Clipwell, then Settings, then Plus: it shows your code once Plus is on. If Plus isn't on, contact the developer through the Chrome Web Store listing and include your Stripe receipt email.</p>
+      </section>
+      <footer>
+        This page runs only in your browser and sends your code nowhere. <a href="./">Privacy policy</a>.
+      </footer>
+    </main>
+    <script>
+      (function () {
+        var id = new URLSearchParams(location.search).get("session_id") || "";
+        var valid = /^cs_(live|test)_[A-Za-z0-9]+$/.test(id);
+        document.getElementById(valid ? "with-code" : "no-code").hidden = false;
+        if (!valid) return;
+        document.getElementById("code").textContent = id;
+        var status = document.getElementById("copied");
+        document.getElementById("copy").addEventListener("click", function () {
+          var done = function () { status.textContent = "Copied."; };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(id).then(done, function () { status.textContent = "Select the code and copy it."; });
+          } else {
+            status.textContent = "Select the code and copy it.";
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
