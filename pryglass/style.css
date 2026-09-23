@@ -1,0 +1,294 @@
+/* Shared stylesheet for the Pryglass pages (index, privacy, support).
+   Plain CSS, no external resources. Light and dark follow the system setting. */
+
+:root {
+  color-scheme: light dark;
+  --ink: #14161c;
+  --muted: #555b69;
+  --accent: #1d4ed8;
+  --accent-ink: #ffffff;
+  --band: #1e3a8a;
+  --band-ink: #f5f7ff;
+  --band-muted: #c9d5f5;
+  --paper: #f6f7f9;
+  --card: #ffffff;
+  --line: #d8dce4;
+  --soft: #eef1f7;
+  --code-bg: #e9ecf3;
+  --warn-bg: #fff7e6;
+  --warn-line: #e9c46a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #eceef3;
+    --muted: #a9b0bf;
+    --accent: #8fb0ff;
+    --accent-ink: #0d1330;
+    --band: #111a3a;
+    --band-ink: #f2f4fb;
+    --band-muted: #b3c0e6;
+    --paper: #0e1015;
+    --card: #171a22;
+    --line: #2c3240;
+    --soft: #1b2030;
+    --code-bg: #232939;
+    --warn-bg: #2a2413;
+    --warn-line: #7a6424;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+  overflow-wrap: break-word;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--card);
+  color: var(--ink);
+  padding: 0.5rem 0.75rem;
+  z-index: 10;
+}
+.skip:focus { left: 0.5rem; top: 0.5rem; }
+
+header.band {
+  background: var(--band);
+  color: var(--band-ink);
+  padding: 2.25rem 1rem 2rem;
+}
+header.band .wrap,
+nav.top .wrap,
+main,
+footer.site .wrap {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+header.band h1 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+header.band p {
+  margin: 0.45rem 0 0;
+  color: var(--band-muted);
+  font-size: 1rem;
+}
+
+nav.top {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  padding: 0 1rem;
+}
+nav.top ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+nav.top li { margin: 0; }
+nav.top a {
+  display: inline-block;
+  padding: 0.7rem 0;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 550;
+}
+nav.top a:hover { text-decoration: underline; }
+nav.top a[aria-current="page"] {
+  color: var(--accent);
+  box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+main { padding: 2rem 1rem 3rem; }
+
+h2 {
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin: 2.25rem 0 0.6rem;
+  scroll-margin-top: 1rem;
+}
+h3 {
+  font-size: 1.02rem;
+  margin: 1.5rem 0 0.4rem;
+  scroll-margin-top: 1rem;
+}
+p, li { color: var(--ink); }
+.lede { font-size: 1.08rem; }
+.muted, .updated { color: var(--muted); }
+.updated { font-size: 0.92rem; margin: 0 0 1.25rem; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: 0.35rem 0; }
+
+a { color: var(--accent); text-underline-offset: 0.15em; }
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+code {
+  font: 0.9em/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: 0.05em 0.3em;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  margin: 1rem 0;
+}
+.card > :first-child { margin-top: 0; }
+.card > :last-child { margin-bottom: 0; }
+
+.summary { background: var(--soft); }
+
+.note {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-line);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+}
+.note > :first-child { margin-top: 0; }
+.note > :last-child { margin-bottom: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 40rem) {
+  .grid.two { grid-template-columns: 1fr 1fr; }
+  .grid.two .card { margin: 0; }
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0;
+}
+.button {
+  display: inline-block;
+  padding: 0.65rem 1.1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--band-ink);
+  color: var(--band);
+  border: 1px solid transparent;
+}
+.button.ghost {
+  background: transparent;
+  color: var(--band-ink);
+  border-color: var(--band-muted);
+}
+.button:hover { text-decoration: underline; }
+
+/* Data table: a normal table on wide screens, stacked rows on phones. */
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+table.data caption {
+  text-align: left;
+  font-weight: 600;
+  padding: 0 0 0.4rem;
+}
+table.data th,
+table.data td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.65rem 0.8rem;
+  border-top: 1px solid var(--line);
+}
+table.data thead th {
+  border-top: 0;
+  background: var(--soft);
+  font-size: 0.88rem;
+}
+@media (max-width: 40rem) {
+  table.data,
+  table.data tbody,
+  table.data tr,
+  table.data td,
+  table.data th { display: block; width: 100%; }
+  table.data thead { position: absolute; left: -9999px; }
+  table.data tr { border-top: 1px solid var(--line); padding: 0.4rem 0; }
+  table.data tr:first-child { border-top: 0; }
+  table.data td,
+  table.data tbody th { border-top: 0; padding: 0.3rem 0.8rem; }
+  table.data td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+}
+
+details {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin: 0.6rem 0;
+  padding: 0 1rem;
+}
+details[open] { padding-bottom: 0.75rem; }
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.75rem 0;
+  list-style-position: outside;
+}
+details > :not(summary):first-of-type { margin-top: 0.1rem; }
+
+.toc {
+  columns: 1;
+  padding-left: 1.3rem;
+}
+@media (min-width: 40rem) { .toc { columns: 2; column-gap: 2rem; } }
+.toc li { break-inside: avoid; margin: 0.2rem 0; }
+
+footer.site {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 1.25rem 1rem 2.5rem;
+}
+footer.site p { color: var(--muted); margin: 0.3rem 0; }
+footer.site a { color: var(--muted); }
+
+@media print {
+  nav.top, .cta, .skip { display: none; }
+  header.band { background: none; color: #000; padding: 0 0 1rem; }
+  header.band p { color: #333; }
+  body { background: #fff; color: #000; }
+}
+
+main > h2:first-child { margin-top: 0; }

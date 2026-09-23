@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Privacy Policy for Pryglass</title>
+    <meta
+      name="description"
+      content="Privacy policy for Pryglass, a Safari extension for iPhone, iPad and Mac. Everything it records stays on your device. No accounts, no analytics, no data sent to the developer."
+    />
+    <link rel="canonical" href="https://andreasne89.github.io/pryglass/privacy.html" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="band">
+      <div class="wrap">
+        <h1>Privacy Policy for Pryglass</h1>
+        <p>Everything Pryglass sees stays on your device. Pryglass was previously called Signal/Block; this policy covers both names.</p>
+      </div>
+    </header>
+    <nav class="top" aria-label="Pryglass pages">
+      <div class="wrap">
+        <ul>
+          <li><a href="./">Overview</a></li>
+          <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main">
+      <!-- UPDATE AT RELEASE: set the date to the day version 1.2 is released on the App Store. -->
+      <p class="updated">Last updated: September 23, 2026 · Applies to Pryglass version 1.2 and later</p>
+
+      <section class="card summary" aria-labelledby="short">
+        <h2 id="short">The short version</h2>
+        <ul>
+          <li>Pryglass analyzes web pages <strong>on your device</strong>. It has no server, no account, no analytics, no advertising and no crash-reporting code, and it makes no network requests of its own.</li>
+          <li>The developer <strong>receives nothing</strong> about you or your browsing from the app or the extension, and shares nothing with anyone, because there is nothing to share.</li>
+          <li>What it keeps is stored in Safari's storage for the extension on the same device. Live page details are temporary. Saved site history is capped, holds site names and page paths but <strong>no query strings, no request addresses and nothing you typed</strong>, and is removed after 90 days.</li>
+          <li>Private Browsing tabs are analyzed live, but <strong>nothing from them is saved</strong>.</li>
+          <li>You can delete the saved history at any time with <strong>Delete saved history</strong>, and remove the extension by removing the app.</li>
+        </ul>
+      </section>
+
+      <div class="note" id="earlier-versions">
+        <p>
+          <strong>Using version 1.1 or earlier (named Signal/Block)?</strong> This policy describes version 1.2. Earlier versions also keep
+          everything on your device and send nothing to the developer, but they differ in these ways:
+        </p>
+        <ul>
+          <li>Saved site history can include page paths <strong>with their query strings</strong>, which sometimes contain search terms or IDs.</li>
+          <li>Private Browsing tabs are saved like normal tabs.</li>
+          <li>Saved history has no time limit and no limit on the number of sites.</li>
+          <li>There is no <strong>Delete saved history</strong> option.</li>
+          <li>Blocking is done by the extension inside the page, not by Safari, and the extension also asks for the "tabs" permission.</li>
+        </ul>
+        <p>
+          Updating to version 1.2 deletes the history saved by earlier versions and keeps your block list. Updating is the
+          most reliable way to remove that older history.
+        </p>
+      </div>
+
+      <h2 id="contents">Contents</h2>
+      <ol class="toc">
+        <li><a href="#controller">Who is responsible</a></li>
+        <li><a href="#processing">What Pryglass processes on your device</a></li>
+        <li><a href="#not-collected">What is not collected</a></li>
+        <li><a href="#permissions">Permissions and why they are needed</a></li>
+        <li><a href="#blocking">Blocking</a></li>
+        <li><a href="#private">Private Browsing</a></li>
+        <li><a href="#retention">How long data is kept</a></li>
+        <li><a href="#delete">How to delete your data</a></li>
+        <li><a href="#you-share">Things you choose to share</a></li>
+        <li><a href="#apple">Apple, purchases and the App Store</a></li>
+        <li><a href="#support-email">If you contact support</a></li>
+        <li><a href="#website">This website</a></li>
+        <li><a href="#rights">Your rights (GDPR)</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+
+      <h2 id="controller">1. Who is responsible</h2>
+      <p>
+        Pryglass (the iPhone, iPad and Mac app and its Safari extension) is made by
+        <strong>Andreas Nelvik Engebretsen</strong> (shown on the App Store as Andreas Engebretsen), an independent
+        developer in Norway ("I", "me", "the developer").
+        For any personal data I do receive, which is only what you send me yourself (<a href="#support-email">section 11</a>),
+        I am the data controller under the EU General Data Protection Regulation (GDPR) as it applies in Norway through the
+        EEA Agreement and the Norwegian Personal Data Act.
+      </p>
+      <p>Contact: <a href="mailto:andreas.nelvik.engebretsen@gmail.com">andreas.nelvik.engebretsen@gmail.com</a></p>
+
+      <h2 id="processing">2. What Pryglass processes on your device</h2>
+      <p>
+        To show what a page does, Pryglass has to look at the pages you open in Safari. This happens entirely on your
+        device, in Safari's extension process. The results are kept in Safari's storage for the Pryglass extension on
+        that device. They are not sent to the developer or to anyone else, and they are not synced between your
+        devices: each iPhone, iPad or Mac keeps its own data.
+      </p>
+
+      <table class="data">
+        <caption>What is kept, where, and for how long</caption>
+        <thead>
+          <tr><th scope="col">Data</th><th scope="col">What it contains</th><th scope="col">Where and how long</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Live page analysis</th>
+            <td data-label="What it contains">
+              For each open tab: the page and frame addresses without their query strings; the addresses of requests the
+              page makes (including query strings, never the part after <code>#</code>, cut at 512 characters); the names of cookies and storage keys a page reads or
+              writes (never their values); which browser features it used (for example canvas, location or clipboard); for
+              form fields you focus or type in, the field's type category and its name or id attribute (never what you type);
+              and the script location that triggered each item. At most 400 items per tab.
+            </td>
+            <td data-label="Where and how long">
+              Safari's temporary session storage for the extension. Replaced when the tab loads a new page, and removed
+              when you close the tab, when you press <strong>Clear</strong>, and when Safari quits. Private Browsing tabs
+              are kept in memory only.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Saved site history</th>
+            <td data-label="What it contains">
+              Saved only for pages where you open Pryglass. Per site: the site name and page paths with ID-like parts
+              removed (no query string, no fragment); a few snapshots per page with counts per category, the domains of third-party companies
+              and their purposes, and the trust score; daily points for the last 30 days; change alerts; companies seen on
+              that site. It never contains a query string, a request address, a form field name or anything you typed.
+            </td>
+            <td data-label="Where and how long">
+              Safari's local storage for the extension on this device. At most 50 sites (the least recently used site is
+              removed first), 30 pages per site and 5 snapshots per page. Entries older than 90 days are removed.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Tracker overview</th>
+            <td data-label="What it contains">
+              For the "Top trackers" view: tracker domains, the company name, and the sites you inspected where each one
+              appeared, with the date last seen.
+            </td>
+            <td data-label="Where and how long">
+              Local storage on this device. Entries older than 30 days are removed. At most 300 trackers and 50 sites each.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Local anomaly check</th>
+            <td data-label="What it contains">
+              Statistical samples (counts per visit) used to spot a page behaving differently from its own history. No AI
+              model is involved.
+            </td>
+            <td data-label="Where and how long">
+              Local storage, at most 30 samples per page, same 90-day limit. Turning <strong>Local anomaly check</strong> off
+              deletes the samples and stops new ones.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Watchlist</th>
+            <td data-label="What it contains">The site names you chose to watch.</td>
+            <td data-label="Where and how long">Local storage, until you remove them.</td>
+          </tr>
+          <tr>
+            <th scope="row">Block rules</th>
+            <td data-label="What it contains">
+              The tracker domains you chose to block, the sites where each rule applies or is lifted, and when each rule
+              last changed (at most 1,000 blocked domains).
+            </td>
+            <td data-label="Where and how long">
+              Local storage, and handed to Safari as content-blocking rules (<a href="#blocking">section 5</a>). Until you remove them.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Settings</th>
+            <td data-label="What it contains">Your choices in <strong>Options</strong>, for example filters, density and whether <strong>Local anomaly check</strong> is on.</td>
+            <td data-label="Where and how long">Local storage, until you change them or remove the app.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The Pryglass app (the one you open from the Home Screen or Applications folder) only explains how to turn on
+        the extension. It stores no data about you and makes no network requests.
+      </p>
+      <p>
+        When you update to version 1.2, Pryglass deletes the site history saved by earlier versions, because that
+        older format could contain full addresses. Your block list is carried over.
+      </p>
+
+      <h2 id="not-collected">3. What is not collected</h2>
+      <ul>
+        <li><strong>Nothing leaves your device.</strong> Pryglass has no server and contains no code that sends data anywhere. Its knowledge of trackers and companies is built into the app; it downloads no lists.</li>
+        <li><strong>No account</strong>, no name, email address or other identifier is asked for or created.</li>
+        <li><strong>No analytics, advertising, tracking, crash-reporting or third-party SDKs.</strong></li>
+        <li><strong>Nothing you type.</strong> Pryglass never reads the contents of form fields, passwords, payment details or messages.</li>
+        <li><strong>No cookie or storage values.</strong> It records which cookie or storage key a page used, not what is stored in it.</li>
+        <li><strong>No page contents</strong> such as text, images or media.</li>
+        <li><strong>No selling or sharing.</strong> Because the developer receives no data from the app, no data is sold, shared or passed to advertisers, data brokers or any other third party.</li>
+      </ul>
+      <p>
+        This matches the "Data Not Collected" privacy label on the App Store: nothing is transmitted off your device to
+        the developer or to third parties.
+      </p>
+
+      <h2 id="permissions">4. Permissions and why they are needed</h2>
+      <p>
+        When you allow a Safari extension on every website, Safari warns that it can read and change web pages, including
+        things like passwords, phone numbers and credit card numbers. That warning describes what the permission would
+        allow. Here is what Pryglass actually does with each permission:
+      </p>
+      <ul>
+        <li>
+          <strong>Website access (all websites).</strong> Pryglass audits whatever site you visit, so it runs its
+          content scripts on every page and frame you open once you allow it. The scripts watch which browser features
+          the page calls and which resources it loads, and report that to the extension on your device. They do not
+          change what the page shows, do not read field contents, and do not send anything to the network. You choose
+          the access in Safari and can limit it to certain sites or remove it at any time (see <a href="support.html#no-access">Support</a>).
+        </li>
+        <li>
+          <strong>Storage.</strong> Keeps the data described in <a href="#processing">section 2</a> in Safari's storage for
+          the extension on your device.
+        </li>
+        <li>
+          <strong>Declarative content blocking (<code>declarativeNetRequest</code>).</strong> Lets Pryglass hand your
+          block list to Safari as rules, and Safari itself applies them. This permission does not let Pryglass read
+          your requests or their contents.
+        </li>
+      </ul>
+      <p>
+        Pryglass does not ask for access to your location, camera, microphone, contacts, photos, clipboard or
+        notifications. When the popup says a page used one of these, it means the <em>page</em> asked Safari for it.
+      </p>
+
+      <h2 id="blocking">5. Blocking</h2>
+      <p>
+        When you block a tracker, Pryglass turns your choice into a content-blocking rule and gives it to Safari, which
+        stops matching requests before they are made. The rules contain only the tracker domain and the site domains you
+        chose. Pryglass ships with no block list of its own and downloads none; nothing is blocked until you choose to.
+        Removing a rule, or removing the app, removes the rule from Safari.
+      </p>
+
+      <h2 id="private">6. Private Browsing</h2>
+      <p>
+        Safari turns extensions off in Private Browsing unless you allow them there. If you allow Pryglass, it analyzes
+        private tabs live so you can see what the page does, but it keeps that analysis in memory only and saves nothing
+        from private tabs: no site history, no tracker overview entries and no anomaly samples. The popup shows a note
+        when you are in a private tab. The live analysis disappears when you close the tab or quit Safari.
+      </p>
+
+      <h2 id="retention">7. How long data is kept</h2>
+      <ul>
+        <li><strong>Live page analysis:</strong> until the tab loads a new page or is closed, you press <strong>Clear</strong>, or Safari quits.</li>
+        <li><strong>Saved site history and anomaly samples:</strong> up to 90 days, within the limits in <a href="#processing">section 2</a>. Older entries are removed the next time Pryglass saves history.</li>
+        <li><strong>Tracker overview:</strong> up to 30 days.</li>
+        <li><strong>Watchlist, block rules and settings:</strong> until you remove or change them, or remove the app.</li>
+      </ul>
+
+      <h2 id="delete">8. How to delete your data</h2>
+      <p>All data is on your device, so you delete it there. The developer has no copy to delete.</p>
+      <ul>
+        <li><strong>Clear the current tab.</strong> Open Pryglass on the page and press <strong>Clear</strong>.</li>
+        <li>
+          <strong>Delete saved history.</strong> In Pryglass, open <strong>Options</strong> and choose
+          <strong>Delete saved history</strong>. This removes all saved site history, change alerts, the tracker overview
+          and anomaly samples on that device. It keeps your block rules, watchlist and settings, and tells you so before
+          you confirm.
+        </li>
+        <li><strong>Remove block rules and watched sites</strong> one by one with <strong>Remove</strong>, or all at once with <strong>Clear all</strong>.</li>
+        <li><strong>Turn off Local anomaly check</strong> in Options to delete its samples and stop collecting them.</li>
+        <li>
+          <strong>Remove the app.</strong> On iPhone and iPad, delete the Pryglass app. On Mac, choose
+          <strong>Safari &gt; Settings &gt; Extensions</strong>, select Pryglass and click <strong>Uninstall</strong>,
+          or move the app to the Trash. This removes the extension and its block rules from Safari. To be sure no saved
+          history is left behind, use <strong>Delete saved history</strong> first.
+        </li>
+        <li>
+          <strong>Safari's own data.</strong> Clearing Safari's history and website data removes what <em>websites</em>
+          stored in Safari, such as their cookies. It is not a reliable way to delete Pryglass's saved history; use
+          <strong>Delete saved history</strong> for that.
+        </li>
+      </ul>
+      <p>
+        To stop Pryglass seeing a site, or any site, change or remove its website access in Safari's extension
+        settings, or turn the extension off. This is how you withdraw permission for the processing described here.
+      </p>
+
+      <h2 id="you-share">9. Things you choose to share</h2>
+      <ul>
+        <li>
+          <strong>Reports.</strong> <strong>Copy report</strong> puts a report of the current page on your clipboard, and
+          the other export options save or copy the same details. Pryglass does this only when you ask and sends it
+          nowhere. A report can contain full request addresses, including query strings, which sometimes carry
+          identifiers, and the names of form fields you used. Check it before you share it with anyone.
+        </li>
+        <li><strong>Links you open.</strong> If you choose to open a request address or the App Store rating page from Pryglass, Safari opens it in a new tab like any other link.</li>
+        <li><strong>Emails to support</strong> are covered in <a href="#support-email">section 11</a>.</li>
+      </ul>
+
+      <h2 id="apple">10. Apple, purchases and the App Store</h2>
+      <p>
+        You buy and download Pryglass through Apple's App Store. Apple handles the payment, your Apple Account and any
+        refund as an independent controller under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.
+        The developer does not receive your name, email address or payment details. Apple gives developers sales and
+        download reports, and, only if you have chosen in your device settings to share analytics or crash data with app
+        developers, statistics and crash reports that Apple prepares. The developer uses these only to understand sales
+        and fix problems. Pryglass itself sends Apple nothing.
+      </p>
+
+      <h2 id="support-email">11. If you contact support</h2>
+      <p>
+        If you email <a href="mailto:andreas.nelvik.engebretsen@gmail.com">andreas.nelvik.engebretsen@gmail.com</a>, I receive your email address, your message
+        and anything you attach, such as screenshots or a copied report. I use this only to answer you and to fix the
+        problem you describe. Writing to me is voluntary, but I need your email address to reply. The legal basis is my legitimate interest in answering your request and improving the app
+        (GDPR Article 6(1)(f)), or, where your message concerns something you bought, providing the product you paid for
+        (Article 6(1)(b)).
+      </p>
+      <p>
+        Emails are kept in my mailbox, which is hosted by an email service provider acting on my behalf. I delete support
+        conversations no later than 24 months after the last message, unless you ask me to delete them sooner or I need
+        them to handle a legal claim. If the email provider stores messages outside the EEA, the transfer is protected by
+        safeguards required by the GDPR, such as the EU Standard Contractual Clauses. I never share your emails with
+        anyone else and never use them for marketing. If you file an issue on GitHub instead, it is public and handled
+        under <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.
+      </p>
+
+      <h2 id="website">12. This website</h2>
+      <p>
+        These pages are hosted on GitHub Pages. They use no cookies, analytics or scripts. GitHub logs the IP address of
+        visitors to GitHub Pages sites for security purposes, under
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.
+        The developer does not receive these logs.
+      </p>
+
+      <h2 id="rights">13. Your rights (GDPR)</h2>
+      <p>
+        If you are in the EEA, the UK or a country with similar laws, you have the right to access, correct and delete
+        personal data about you, to restrict or object to its processing, and to data portability. Because the data
+        Pryglass records never leaves your device, the developer cannot see, export or delete it; you are in full
+        control of it through the options in <a href="#delete">section 8</a>. For support emails, write to
+        <a href="mailto:andreas.nelvik.engebretsen@gmail.com">andreas.nelvik.engebretsen@gmail.com</a> and I will answer within one month. For data Apple holds
+        about your purchase or Apple Account, contact Apple.
+      </p>
+      <p>
+        The developer makes no automated decisions about you and does no profiling of you. The trust score and labels
+        describe websites, are worked out on your device, and are never seen by the developer.
+      </p>
+      <p>
+        You can also complain to a data protection authority. In Norway this is Datatilsynet, the Norwegian Data
+        Protection Authority (<a href="https://www.datatilsynet.no/">datatilsynet.no</a>). You can also contact the
+        authority in the country where you live or work.
+      </p>
+
+      <h2 id="children">14. Children</h2>
+      <p>
+        Pryglass is not directed at children, but it collects no personal data from anyone, including children under
+        13 (or the minimum age in your country). If a child sends a support email, it is handled as described in
+        <a href="#support-email">section 11</a>, and a parent or guardian can ask me to delete it.
+      </p>
+
+      <h2 id="changes">15. Changes to this policy</h2>
+      <p>
+        If Pryglass starts handling data differently, I will update this page before the new version is released and
+        change the effective date at the top. If a change would mean any data leaves your device, it will be described
+        here and in the App Store release notes first. Earlier versions of this policy are kept in the public history of
+        the <a href="https://github.com/AndreasNE89/AndreasNE89.github.io">GitHub repository</a> that publishes this website.
+      </p>
+
+      <h2 id="contact">16. Contact</h2>
+      <p>
+        Andreas Nelvik Engebretsen, Norway<br />
+        Email: <a href="mailto:andreas.nelvik.engebretsen@gmail.com">andreas.nelvik.engebretsen@gmail.com</a><br />
+        Support: <a href="support.html">andreasne89.github.io/pryglass/support.html</a>
+      </p>
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <p><a href="./">Pryglass</a> · <a href="support.html">Support</a> · <a href="https://apps.apple.com/app/id6761009625">App Store</a></p>
+        <p>Pryglass is made by Andreas Nelvik Engebretsen, an independent developer in Norway.</p>
+      </div>
+    </footer>
+  </body>
+</html>

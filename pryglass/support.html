@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Pryglass Support</title>
+    <meta
+      name="description"
+      content="Help and contact for Pryglass, the Safari extension for iPhone, iPad and Mac: setup, website access, what the scores mean, blocking, Private Browsing, deleting data and refunds."
+    />
+    <link rel="canonical" href="https://andreasne89.github.io/pryglass/support.html" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="band">
+      <div class="wrap">
+        <h1>Pryglass Support</h1>
+        <p>Pryglass was previously called Signal/Block.</p>
+        <p>Help with setup, results and your data. I read every message.</p>
+      </div>
+    </header>
+    <nav class="top" aria-label="Pryglass pages">
+      <div class="wrap">
+        <ul>
+          <li><a href="./">Overview</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="support.html" aria-current="page">Support</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main">
+      <h2 id="contact">Contact</h2>
+      <div class="card">
+        <p>
+          Email: <a href="mailto:andreas.nelvik.engebretsen@gmail.com?subject=Pryglass%20support">andreas.nelvik.engebretsen@gmail.com</a>
+        </p>
+        <p>
+          Pryglass is made by one developer, Andreas Nelvik Engebretsen, in Norway. I answer in English or Norwegian,
+          usually within a few working days.
+        </p>
+      </div>
+
+      <h2 id="bug-report">What to include in a bug report</h2>
+      <ul>
+        <li>Your device and system version (for example iPhone with iOS 26.0, or Mac with macOS 26.0) and your Safari version.</li>
+        <li>The Pryglass version: shown in the App Store under Version History, or on Mac by opening the Pryglass app and choosing <strong>About</strong> from the app's menu (the menu next to the Apple menu).</li>
+        <li>What you did, what you expected, and what happened instead. Step-by-step is best.</li>
+        <li>The website where it happens, if you're comfortable sharing it. A public page I can open myself is ideal.</li>
+        <li>How website access is set for Pryglass (all websites, some websites, or ask), and whether other content blockers or extensions are turned on.</li>
+        <li>Whether it happens in a normal tab, a Private Browsing tab, or both.</li>
+        <li>A screenshot of the Pryglass popup, if it helps.</li>
+        <li>
+          Optionally, a report from <strong>Copy report</strong>. It can contain full request addresses, including query
+          strings that sometimes carry identifiers or tokens. Read it first and remove anything you don't want to send.
+        </li>
+      </ul>
+      <p class="muted">Pryglass sends me nothing by itself, so I only see what you choose to include. See the <a href="privacy.html#support-email">privacy policy</a> for how support emails are handled.</p>
+
+      <h2 id="faq">Questions and answers</h2>
+
+      <h3 id="setup">Setup and access</h3>
+
+      <details id="no-access">
+        <summary>The popup is empty, or says it can't see this site</summary>
+        <p>Almost always, Safari hasn't given Pryglass access to the site. Safari only lets an extension see the pages you allow.</p>
+        <ul>
+          <li>
+            <strong>iPhone and iPad:</strong> open <strong>Settings &gt; Apps &gt; Safari &gt; Extensions</strong>
+            (iOS 17 or earlier: <strong>Settings &gt; Safari &gt; Extensions</strong>), tap Pryglass, make sure
+            <strong>Allow Extension</strong> is on, and set website access for <strong>All Websites</strong> (or
+            <strong>Other Websites</strong>) to <strong>Allow</strong>. In Safari you can also tap the page menu button in the
+            address bar, tap Pryglass and choose <strong>Always Allow on Every Website</strong>.
+          </li>
+          <li>
+            <strong>Mac:</strong> choose <strong>Safari &gt; Settings &gt; Extensions</strong>, select the checkbox for Pryglass, click
+            <strong>Edit Websites</strong> and set <strong>When visiting other websites</strong> to <strong>Allow</strong>.
+            Or click the Pryglass toolbar button and choose <strong>Always Allow on Every Website</strong>.
+          </li>
+        </ul>
+        <p>Then <strong>reload the page</strong>. Pryglass starts watching when a page loads, so pages that were already open before you allowed access show nothing, or only a limited view, until you reload them.</p>
+        <p>Some pages can't be inspected at all: Safari's own pages (such as the Start Page and settings), pages that aren't websites (such as local files), and some pages where Safari doesn't run extensions. Private Browsing tabs need Pryglass to be allowed in Private Browsing (<a href="#private">see below</a>).</p>
+      </details>
+
+      <details>
+        <summary>I can't find the Pryglass button</summary>
+        <p><strong>iPhone and iPad:</strong> tap the page menu button at the left of the address bar (it may show as <strong>aA</strong>, a page icon or <strong>•••</strong>, depending on your iOS version), then tap <strong>Pryglass</strong>. If it isn't listed, tap <strong>Manage Extensions</strong> and turn it on.</p>
+        <p><strong>Mac:</strong> choose <strong>View &gt; Customize Toolbar</strong> and drag the Pryglass button into the toolbar.</p>
+      </details>
+
+      <details>
+        <summary>It says "limited" for a page</summary>
+        <p>Pryglass could see the page's resources but not the browser features it used, usually because the page was already open when access was granted or loaded in an unusual way. Reload the page. If it keeps happening on one site, please send me the address.</p>
+      </details>
+
+      <details>
+        <summary>What do I need to run it?</summary>
+        <p>Safari 18.4 or later: iOS or iPadOS 18.4 or later, or macOS Ventura (13) or later with Safari updated to 18.4 or later. One purchase covers iPhone, iPad and Mac with the same Apple Account.</p>
+      </details>
+
+      <h3 id="results">Understanding the results</h3>
+
+      <details id="grades">
+        <summary>What do the trust score and the labels mean?</summary>
+        <p>Each finding is sorted into one of three groups:</p>
+        <ul>
+          <li><strong>Routine:</strong> ordinary behavior, such as loading page content or storage without tracking identifiers.</li>
+          <li><strong>Noteworthy:</strong> for example analytics or advertising requests, storage keys typical of tracking IDs, or device checks that could be used for fingerprinting.</li>
+          <li><strong>High sensitivity:</strong> for example strong signs of fingerprinting, session-recording services, or requests for your location, camera, microphone or clipboard contents.</li>
+        </ul>
+        <p>The trust score (0 to 100, higher means fewer concerns) sums these findings up and lists the main reasons. Form activity is shown as context and never lowers the score by itself.</p>
+        <p><strong>The limits:</strong> the score and labels come from heuristics (rules about hosts, request paths, API use and known vendors), not certainty. A flagged item is a reason to look closer, not proof of wrongdoing: a canvas read can be a chart, and a location request can be a store finder. Tracking can also go unseen, for example when it happens on a company's servers, or uses methods Pryglass doesn't recognize. Use the reasons shown on each item to judge for yourself.</p>
+      </details>
+
+      <details>
+        <summary>What does "What changed since your last visit" compare?</summary>
+        <p>When you open Pryglass on a page, it saves a short summary of that visit on your device. Next time, it compares the new visit with that site's own history, for example new third-party companies or new sensitive behaviour. It can only compare sites you have opened Pryglass on before, and private tabs are never added to that history. The <strong>Local anomaly check</strong> uses simple statistics on the same history. No AI model is involved.</p>
+      </details>
+
+      <details>
+        <summary>Does the watchlist monitor sites in the background?</summary>
+        <p>No. Changes on watched sites are highlighted when you open Pryglass on them. Pryglass never visits sites by itself.</p>
+      </details>
+
+      <h3 id="blocking">Blocking</h3>
+
+      <details id="still-loads">
+        <summary>I blocked a tracker, but some requests still load</summary>
+        <p>Pryglass gives your rules to Safari, and Safari does the blocking. Some requests can still get through or still appear:</p>
+        <ul>
+          <li><strong>Rules still applying.</strong> If the block manager says "Applying rules…" or "Blocking rules couldn't be applied", wait a moment, reload the page, and try again. "Blocking isn't available in this Safari version" means your Safari can't apply these rules.</li>
+          <li><strong>Requests from before the block.</strong> Requests the page made before you added the rule stay in the list for that tab. Reload the page after blocking.</li>
+          <li><strong>The site's own domain.</strong> A domain is never blocked on its own website, and the page itself is never blocked, so the site keeps working.</li>
+          <li><strong>Request types.</strong> Safari applies rules to common request types (scripts, images, frames, style sheets, fonts, media, data requests, pings and web sockets). Requests made from background workers are blocked on a best-effort basis.</li>
+          <li><strong>Different domains.</strong> A rule covers a domain and its subdomains. The same company may also use other domains, which need their own rule.</li>
+          <li><strong>Other blockers.</strong> Other content blockers and extensions work independently. If one of them lets a request through or blocks it first, results can differ from what you expect.</li>
+        </ul>
+        <p>In the list, <strong>Blocked</strong> marks a request the page tried to make that matches one of your active rules, so Safari should have stopped it. <strong>Not blocked</strong> marks one that matches a rule but was seen loading, or was made while the rules weren't active. Pryglass can't see Safari's blocking directly, so these tags are its best reading of what happened.</p>
+      </details>
+
+      <details>
+        <summary>Do I still need my ad blocker?</summary>
+        <p>Pryglass isn't an ad blocker and has no built-in block list. It shows what pages do and lets you block the trackers you choose. It works alongside ad and content blockers.</p>
+      </details>
+
+      <h3 id="data">Privacy and your data</h3>
+
+      <details id="private">
+        <summary>Does it work in Private Browsing?</summary>
+        <p>Only if you allow it: Safari turns extensions off in Private Browsing unless you turn them on there (on iPhone and iPad in the extension's settings under <strong>Settings &gt; Apps &gt; Safari &gt; Extensions</strong>; on Mac in <strong>Safari &gt; Settings &gt; Extensions</strong>). In a private tab, Pryglass shows the live analysis but saves nothing from it: no site history, no tracker overview entries and no anomaly samples.</p>
+      </details>
+
+      <details id="delete">
+        <summary>How do I delete my data?</summary>
+        <ul>
+          <li><strong>This tab:</strong> press <strong>Clear</strong> in the popup.</li>
+          <li><strong>All saved history:</strong> open <strong>Options</strong> and choose <strong>Delete saved history</strong>. Your block rules, watchlist and settings are kept.</li>
+          <li><strong>Block rules and watched sites:</strong> use <strong>Remove</strong> or <strong>Clear all</strong>.</li>
+          <li><strong>Everything:</strong> use <strong>Delete saved history</strong>, then remove the app. On Mac you can also uninstall it in <strong>Safari &gt; Settings &gt; Extensions</strong>.</li>
+        </ul>
+        <p>Everything is stored only on your device, so I have nothing to delete on my side. Details are in the <a href="privacy.html#delete">privacy policy</a>.</p>
+      </details>
+
+      <details>
+        <summary>Does Pryglass send my browsing anywhere?</summary>
+        <p>No. It has no server, no account, no analytics and no crash reporting, and it makes no network requests of its own. Reports you copy go only where you paste them. See the <a href="privacy.html">privacy policy</a>.</p>
+      </details>
+
+      <details>
+        <summary>Why does Safari warn that it can read passwords and credit card numbers?</summary>
+        <p>Safari shows that warning for every extension that asks for access to websites, because the permission would allow it. Pryglass uses the access to watch which browser features a page uses. It never reads what you type into fields and sends nothing off your device. You can limit access to certain sites at any time.</p>
+      </details>
+
+      <h3 id="purchase">Purchases and refunds</h3>
+
+      <details id="refund">
+        <summary>How do I get a refund?</summary>
+        <p>Apple handles all App Store payments and refunds; I can't issue them myself. To ask Apple for a refund:</p>
+        <ol>
+          <li>Go to <a href="https://reportaproblem.apple.com/">reportaproblem.apple.com</a> and sign in with your Apple Account.</li>
+          <li>Choose <strong>I'd like to</strong>, then <strong>Request a refund</strong>.</li>
+          <li>Pick the reason, choose Pryglass, and submit.</li>
+        </ol>
+        <p>Apple usually replies within 24 to 48 hours. If something isn't working, I'd also like to hear about it, and I may be able to help.</p>
+      </details>
+
+      <details>
+        <summary>I bought it on iPhone. Do I have to pay again on Mac or iPad?</summary>
+        <p>No. It's one universal purchase. Sign in to the App Store on your other device with the same Apple Account and download Pryglass from your purchases. Each device keeps its own history and block rules.</p>
+      </details>
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <p><a href="./">Pryglass</a> · <a href="privacy.html">Privacy</a> · <a href="https://apps.apple.com/app/id6761009625">App Store</a></p>
+        <p>Pryglass is made by Andreas Nelvik Engebretsen, an independent developer in Norway.</p>
+      </div>
+    </footer>
+  </body>
+</html>

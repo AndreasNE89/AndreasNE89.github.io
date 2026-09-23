@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brolly — Privacy Policy</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body {
+        max-width: 46rem;
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem 4rem;
+        font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+      h2 { font-size: 1.1rem; margin-top: 2rem; }
+      .updated { color: #6b7280; font-size: 0.9rem; margin-top: 0; }
+      table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+      th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid #d1d5db; vertical-align: top; }
+      th { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
+      code { font-size: 0.9em; }
+      .lede { font-size: 1.05rem; }
+    </style>
+  </head>
+  <body>
+    <!-- SOURCE OF TRUTH. Two copies are derived from this file:
+           * dist/privacy.html — bundled into the extension by scripts/build.mjs
+           * index.html in the public AndreasNE89/brolly-privacy repo, served at
+             https://andreasne89.github.io/brolly-privacy/ (the URL the Web Store
+             requires; Pages needs a public repo and this one is private)
+         Edit here, then copy to brolly-privacy and push, or the hosted policy
+         drifts from the one inside the extension. -->
+    <h1>Brolly — Privacy Policy</h1>
+    <p class="updated">Last updated: 31 July 2026</p>
+
+    <p class="lede">
+      Brolly has no accounts, no advertising, no analytics, and no trackers. Free
+      installs store nothing that identifies you. If you buy the optional one-time
+      upgrade, the payment library keeps the email address you paid with in your
+      browser — that is the only personal information Brolly ever holds, and it is
+      described in the table below. Every request the extension makes goes to a
+      single server of ours; this page explains each of them, and exactly what each
+      one contains.
+    </p>
+
+    <h2>What the extension stores, and where</h2>
+    <p>
+      Everything is stored in your browser, using Chrome's own extension storage. None
+      of it is sent to us.
+    </p>
+    <table>
+      <tr><th>Data</th><th>Where</th><th>Why</th></tr>
+      <tr>
+        <td>The cities you chose — a home city, plus any extras you save — and your
+        settings: units, badge appearance, clock format, notifications, Planner
+        activities, which one-time hints you have dismissed, and which optional
+        features are unlocked</td>
+        <td><code>chrome.storage.sync</code>, mirrored to <code>chrome.storage.local</code></td>
+        <td>So your settings survive a browser restart or a profile move. If you have
+        Chrome Sync enabled, Chrome — not us — may sync this between your own devices.</td>
+      </tr>
+      <tr>
+        <td>The most recent weather data for each of those cities: the forecast, any
+        official warnings, the next couple of hours of precipitation, and the
+        temperatures behind the warmer-than-yesterday comparison. Also the planetary
+        geomagnetic forecast, which is not tied to a city at all.</td>
+        <td><code>chrome.storage.local</code></td>
+        <td>So the toolbar badge and the popup are correct the instant you look at
+        them, without waiting for the network.</td>
+      </tr>
+      <tr>
+        <td>The pressure mark you set by tapping the barometer</td>
+        <td><code>chrome.storage.local</code></td>
+        <td>So the dial can show which way pressure has moved since you set it. It is
+        kept per city, on this device only, and is deliberately not synced.</td>
+      </tr>
+      <tr>
+        <td><strong>If — and only if — you buy the optional one-time upgrade:</strong> the
+        email address you paid with, and the fact that you paid, held by the payment
+        library (ExtensionPay)</td>
+        <td><code>chrome.storage.sync</code></td>
+        <td>So that the features you bought stay unlocked, and so you can restore them on
+        another computer by asking for a login link. Your card details never reach this
+        extension or us — payment happens on Stripe's own checkout page. If you never buy
+        anything, no email is ever stored.</td>
+      </tr>
+      <tr>
+        <td>The date this extension was installed, written by the payment library
+        (ExtensionPay) that handles the optional one-time purchase</td>
+        <td><code>chrome.storage.sync</code></td>
+        <td>The library records it so that, if a paid tier is offered, it can tell a new
+        install from an old one. It is a date and nothing else — no identifier, no
+        address. It is written whether or not anything is for sale, and whether or not
+        you ever buy anything.</td>
+      </tr>
+      <tr>
+        <td>Bookkeeping that keeps the rest working: which city the badge is currently
+        following, which warnings you have already been notified about, and whether the
+        last refresh for a city failed</td>
+        <td><code>chrome.storage.local</code></td>
+        <td>So a change of home city is noticed and refetched, rather than left showing
+        the previous city's temperature; so a notification is not repeated; and so the
+        popup can tell you when a check failed instead of showing an old reading as
+        though it were current.</td>
+      </tr>
+    </table>
+    <p>
+      Nothing Brolly stores falls outside that table. Uninstalling the extension
+      removes all of it, and no copy of it exists on any server of ours.
+    </p>
+    <p>
+      <strong>On precision.</strong> A saved city is held at the coordinates the place
+      list gives for it, to four decimal places, and each stored item is filed under
+      those same coordinates so that one city's data is told apart from another's. That
+      is finer than the two decimals a request carries, and the difference is
+      deliberate: these coordinates identify a town in a public place list rather than
+      a position of yours, they are a label on your own disk, and the labels themselves
+      are never sent anywhere. Every request rounds to two decimals first, as described
+      below.
+    </p>
+
+    <h2>What we never ask for</h2>
+    <ul>
+      <li>
+        <strong>Your device location.</strong> Brolly does not request the
+        <code>geolocation</code> permission. You type a city name; that is the only
+        location it knows.
+      </li>
+      <li>
+        <strong>Your browsing.</strong> It does not request access to the pages you
+        visit, your history, your tabs, or your bookmarks, and it runs no code on any
+        website.
+      </li>
+      <li>
+        <strong>Your identity.</strong> There is no account and no sign-in. If you buy
+        Brolly Pro, our payment provider stores the email address you used at checkout,
+        so the purchase can be restored on another computer — that is the only
+        identifier involved, it applies only to buyers, and it is listed in the table
+        above. If you buy nothing, no identifier exists.
+      </li>
+    </ul>
+
+    <h2>The requests it makes</h2>
+    <p>
+      To show a forecast, the extension asks our own server for the weather at the
+      coordinates of the city you picked. That request contains:
+    </p>
+    <ul>
+      <li>
+        <strong>A latitude and longitude, rounded to two decimals</strong> — about a
+        one-kilometre grid square. This is deliberately imprecise: it is the centre of
+        the town you chose, not a position, and rounding also lets everyone in the
+        same town share one cached answer.
+      </li>
+      <li>
+        <strong>Your IP address</strong>, because every internet request necessarily
+        includes one.
+      </li>
+      <li>
+        <strong>The publication time of the forecast already on your machine</strong>,
+        once there is one — so the server can answer &ldquo;that one is still
+        current&rdquo; rather than send it again. It is the weather model's own
+        timestamp, the same for everyone holding that forecast, and it describes the
+        data rather than you.
+      </li>
+    </ul>
+    <p>
+      That is the entire payload of a forecast request. There is no identifier, no
+      cookie, and nothing linking one request to another.
+    </p>
+    <p>
+      <strong>We keep no logs of it.</strong> The server stores cached forecasts keyed
+      by rounded coordinates — never by IP, and never by user. It sets no cookies. The
+      same request from a hundred people in one town is indistinguishable, because it
+      is literally the same request. The one thing the server counts is how often its
+      cache was hit or missed since it last restarted: running totals, held in memory,
+      with nothing in them about who asked.
+    </p>
+    <p>
+      The extension makes four other kinds of request, all to that same server:
+    </p>
+    <ul>
+      <li>
+        <strong>Official weather warnings</strong> — the same rounded coordinates.
+        Where an official warning service can be asked about a point, our server asks
+        it; for most of the world there is none to ask, and the request goes no further
+        than our server.
+      </li>
+      <li>
+        <strong>Precipitation for the next couple of hours</strong>, where weather radar
+        reaches — again the same rounded coordinates.
+      </li>
+      <li>
+        <strong>Geomagnetic activity, for the northern-lights forecast</strong> — no
+        coordinates, and no parameters of any kind. What comes back is planetary: one
+        set of figures that is the same everywhere on earth. So this is one fixed
+        address, identical for every user. It is requested only if you turn that
+        activity on and the city you chose is far enough north or south for an aurora to
+        be possible there.
+      </li>
+      <li>
+        <strong>A city search</strong> — the term you typed, answered from a city list
+        the server already holds. Search terms are not logged either.
+      </li>
+    </ul>
+    <p>
+      Those answers are cached the way forecasts are: under the rounded coordinates,
+      under the search term, or — for the planetary figures — under a single fixed
+      address that carries nothing about you. Never under an IP address, and never under
+      a user.
+    </p>
+
+    <h2>Who else is involved</h2>
+    <p>
+      Our server fetches forecasts from the
+      <a href="https://api.met.no/">Norwegian Meteorological Institute (MET Norway)</a>,
+      passing along only the rounded coordinates. The short-range precipitation series
+      comes from the same institute, requested the same way. So do official warnings,
+      for coordinates in a broad band of northern Europe: that band decides only whether
+      the request is worth making, and MET's warning service issues warnings for Norway,
+      so a point elsewhere in the band is sent to it but has no warning to receive back.
+      Since 31 July 2026 a warning request also carries the language code <code>no</code>
+      when your browser's language is Norwegian, so MET can answer in Norwegian; nothing is
+      sent for any other language. Apart from that code and the rounded coordinate, MET
+      receives nothing about you — not your IP, not anything else — because
+      the request comes from our server, not your browser. Its data is used under
+      <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+    </p>
+    <p>
+      For coordinates in the Americas, and in the US Pacific territories, official
+      warnings come from the
+      <a href="https://www.weather.gov/">US National Weather Service</a>
+      (<code>api.weather.gov</code>). Our server sends it the same rounded coordinates
+      and nothing else. As with MET, your IP address never reaches it, because the
+      request is made by our server rather than by your browser. The service answers for
+      the United States and its territories and refuses points outside them, which is
+      how our server learns there is nothing to ask about a place and stops asking for a
+      day. Its data is a US government work, in the public domain.
+    </p>
+    <p>
+      Geomagnetic activity, used only for the northern-lights forecast, comes from
+      <a href="https://www.swpc.noaa.gov/">NOAA's Space Weather Prediction Center</a>
+      (<code>services.swpc.noaa.gov</code>). That request carries no coordinates and no
+      parameters at all — it is one fixed address, and what it returns is the same
+      everywhere on earth — so nothing about you or your city reaches it. It is named
+      here for completeness, not because it receives anything.
+    </p>
+    <p>
+      The city list is built from <a href="https://www.geonames.org/">GeoNames</a>,
+      also used under CC BY 4.0. It is stored on our server; no request is made to
+      GeoNames when you search.
+    </p>
+    <p>
+      The server runs on Cloudflare Workers. Cloudflare processes the request as our
+      infrastructure provider and may retain transient network-level logs under
+      <a href="https://www.cloudflare.com/privacypolicy/">their own privacy policy</a>.
+    </p>
+
+    <h2>Notifications</h2>
+    <p>
+      If you leave severe-condition alerts on, notifications are generated on your own
+      machine from the forecast and the official warnings already stored there. Nothing
+      is sent anywhere to produce them, and no push service is involved.
+    </p>
+
+    <h2>Children</h2>
+    <p>
+      Brolly is not directed at children. Free installs collect no personal
+      information from anyone, of any age. The only personal information that can
+      ever appear — a buyer's email, held in the browser by the payment library —
+      comes from an optional purchase a parent or guardian would have to make.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      If this policy ever changes in a way that affects what leaves your browser, the
+      change will be described here with a new date. The dated notes below are the
+      record.
+    </p>
+    <ul>
+      <li>
+        <strong>31 July 2026</strong> — something small did change about what leaves your
+        browser, so it is recorded here. Brolly now shows official MET Norway warnings in
+        Norwegian to people whose browser is set to Norwegian, which it does by sending the
+        language code <code>no</code> along with the rounded coordinate when it asks for
+        warnings. Nothing is sent for any other language, and nothing else about your
+        browser is sent in any case. The same release added the ability to search for a city
+        by its name in your own language, which changed no request at all — the names are a
+        list inside our own server.
+      </li>
+      <li>
+        <strong>28 July 2026</strong> — wording only, and nothing about what leaves your
+        browser changed. One bullet still said there was no identifier of any kind, which
+        the previous day's entry had already contradicted: buyers of the optional upgrade
+        have an email held by the payment provider. That bullet now says so and points at
+        the table. Recorded here because a policy that disagrees with itself is worth a
+        dated note even when the behaviour it describes has not moved.
+      </li>
+      <li>
+        <strong>27 July 2026</strong> — Brolly gained official weather warnings,
+        short-range precipitation and a northern-lights forecast. Each is a further
+        request to the same server, carrying the same rounded coordinates as a forecast
+        or, for the northern lights, no parameters at all. Two upstream services are
+        named here for the first time: the US National Weather Service, which receives
+        those rounded coordinates from our server, and NOAA's Space Weather Prediction
+        Center, which receives nothing. The same day, the optional paid upgrade began
+        storing the buyer's email via ExtensionPay; the opening paragraphs were
+        rewritten so they no longer claimed Brolly holds no personal information at all.
+      </li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>
+      Questions or concerns:
+      <a href="mailto:andreas.nelvik.engebretsen@gmail.com">andreas.nelvik.engebretsen@gmail.com</a>.
+    </p>
+  </body>
+</html>
