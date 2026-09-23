@@ -41,7 +41,7 @@
           <li>The developer <strong>receives nothing</strong> about you or your browsing from the app or the extension, and shares nothing with anyone, because there is nothing to share.</li>
           <li>What it keeps is stored in Safari's storage for the extension on the same device. Live page details are temporary. Saved site history is capped, holds site names and page paths but <strong>no query strings, no request addresses and nothing you typed</strong>, and is removed after 90 days.</li>
           <li>Private Browsing tabs are analyzed live, but <strong>nothing from them is saved</strong>.</li>
-          <li>You can delete the saved history at any time with <strong>Delete saved history</strong>, and remove the extension by removing the app.</li>
+          <li>You can delete the saved history at any time with <strong>More &gt; Your data &gt; Delete saved history</strong>, and remove the extension by removing the app.</li>
         </ul>
       </section>
 
@@ -58,8 +58,8 @@
           <li>Blocking is done by the extension inside the page, not by Safari, and the extension also asks for the "tabs" permission.</li>
         </ul>
         <p>
-          Updating to version 1.2 deletes the history saved by earlier versions and keeps your block list. Updating is the
-          most reliable way to remove that older history.
+          Updating to version 1.2 deletes the history saved by earlier versions and keeps your block list, watched sites
+          and settings. Updating is the most reliable way to remove that older history.
         </p>
       </div>
 
@@ -119,7 +119,7 @@
             </td>
             <td data-label="Where and how long">
               Safari's temporary session storage for the extension. Replaced when the tab loads a new page, and removed
-              when you close the tab, when you press <strong>Clear</strong>, and when Safari quits. Private Browsing tabs
+              when you close the tab, when you choose <strong>Clear list</strong>, and when Safari quits. Private Browsing tabs
               are kept in memory only.
             </td>
           </tr>
@@ -128,8 +128,9 @@
             <td data-label="What it contains">
               Saved only for pages where you open Pryglass. Per site: the site name and page paths with ID-like parts
               removed (no query string, no fragment); a few snapshots per page with counts per category, the domains of third-party companies
-              and their purposes, and the trust score; daily points for the last 30 days; change alerts; companies seen on
-              that site. It never contains a query string, a request address, a form field name or anything you typed.
+              and their purposes, and the trust score; daily points for the last 30 days; change alerts, and whether you
+              muted alerts or marked a change as expected; companies seen on that site. It never contains a query string,
+              a request address, a form field name or anything you typed.
             </td>
             <td data-label="Where and how long">
               Safari's local storage for the extension on this device. At most 50 sites (the least recently used site is
@@ -139,7 +140,7 @@
           <tr>
             <th scope="row">Tracker overview</th>
             <td data-label="What it contains">
-              For the "Top trackers" view: tracker domains, the company name, and the sites you inspected where each one
+              For the site counts in "Top trackers": tracker domains, the company name, and the sites you inspected where each one
               appeared, with the date last seen.
             </td>
             <td data-label="Where and how long">
@@ -147,23 +148,23 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Local anomaly check</th>
+            <th scope="row">Unusual visit check</th>
             <td data-label="What it contains">
-              Statistical samples (counts per visit) used to spot a page behaving differently from its own history. No AI
-              model is involved.
+              Statistical samples (counts per visit) used to spot a visit to a page that differs from your earlier visits
+              to it. No AI model is involved.
             </td>
             <td data-label="Where and how long">
-              Local storage, at most 30 samples per page, same 90-day limit. Turning <strong>Local anomaly check</strong> off
-              deletes the samples and stops new ones.
+              Local storage, at most 30 samples per page, same 90-day limit. Turning off <strong>Spot unusual visits</strong>
+              (in <strong>More &gt; Options</strong>) deletes the samples and stops new ones.
             </td>
           </tr>
           <tr>
-            <th scope="row">Watchlist</th>
+            <th scope="row">Watched sites</th>
             <td data-label="What it contains">The site names you chose to watch.</td>
             <td data-label="Where and how long">Local storage, until you remove them.</td>
           </tr>
           <tr>
-            <th scope="row">Block rules</th>
+            <th scope="row">Blocked domains</th>
             <td data-label="What it contains">
               The tracker domains you chose to block, the sites where each rule applies or is lifted, and when each rule
               last changed (at most 1,000 blocked domains).
@@ -174,15 +175,20 @@
           </tr>
           <tr>
             <th scope="row">Settings</th>
-            <td data-label="What it contains">Your choices in <strong>Options</strong>, for example filters, density and whether <strong>Local anomaly check</strong> is on.</td>
+            <td data-label="What it contains">Your choices in <strong>More &gt; Options</strong> (<strong>Group repeats</strong>, <strong>Hide minor items</strong>, <strong>Expand all cards</strong>, <strong>Spot unusual visits</strong>), and the filter, tab and comparison you last chose.</td>
             <td data-label="Where and how long">Local storage, until you change them or remove the app.</td>
           </tr>
         </tbody>
       </table>
 
       <p>
-        The Pryglass app (the one you open from the Home Screen or Applications folder) only explains how to turn on
-        the extension. It stores no data about you and makes no network requests.
+        The Pryglass app (the one you open from the Home Screen or Applications folder) explains how to set up the
+        extension. On a Mac, and on iPhone and iPad with iOS or iPadOS 26.2 or later, it asks Safari whether the
+        Pryglass extension is turned on, so it can show you. It makes no network requests and never sees your browsing
+        or the extension's data. In its own settings on the device it keeps three small values used only to decide when
+        to ask Apple to show its standard rating request (<a href="#apple">section 10</a>): how many times the app has
+        been opened, the launch on which it first saw the extension turned on, and the app version it last asked for a
+        rating on. They never leave the device and are removed when you delete the app.
       </p>
       <p>
         When you update to version 1.2, Pryglass deletes the site history saved by earlier versions, because that
@@ -206,14 +212,14 @@
 
       <h2 id="permissions">4. Permissions and why they are needed</h2>
       <p>
-        When you allow a Safari extension on every website, Safari warns that it can read and change web pages, including
+        When you allow a Safari extension on all websites, Safari warns that it can read and change web pages, including
         things like passwords, phone numbers and credit card numbers. That warning describes what the permission would
         allow. Here is what Pryglass actually does with each permission:
       </p>
       <ul>
         <li>
           <strong>Website access (all websites).</strong> Pryglass audits whatever site you visit, so it runs its
-          content scripts on every page and frame you open once you allow it. The scripts watch which browser features
+          content scripts on the pages and frames you open once you allow it there. The scripts watch which browser features
           the page calls and which resources it loads, and report that to the extension on your device. They do not
           change what the page shows, do not read field contents, and do not send anything to the network. You choose
           the access in Safari and can limit it to certain sites or remove it at any time (see <a href="support.html#no-access">Support</a>).
@@ -245,30 +251,31 @@
       <p>
         Safari turns extensions off in Private Browsing unless you allow them there. If you allow Pryglass, it analyzes
         private tabs live so you can see what the page does, but it keeps that analysis in memory only and saves nothing
-        from private tabs: no site history, no tracker overview entries and no anomaly samples. The popup shows a note
-        when you are in a private tab. The live analysis disappears when you close the tab or quit Safari.
+        from private tabs: no site history, no tracker overview entries and no unusual-visit samples. The popup marks a
+        private tab with "Private tab · nothing saved". The live analysis disappears when you close the tab or quit Safari.
       </p>
 
       <h2 id="retention">7. How long data is kept</h2>
       <ul>
-        <li><strong>Live page analysis:</strong> until the tab loads a new page or is closed, you press <strong>Clear</strong>, or Safari quits.</li>
-        <li><strong>Saved site history and anomaly samples:</strong> up to 90 days, within the limits in <a href="#processing">section 2</a>. Older entries are removed the next time Pryglass saves history.</li>
+        <li><strong>Live page analysis:</strong> until the tab loads a new page or is closed, you choose <strong>Clear list</strong>, or Safari quits.</li>
+        <li><strong>Saved site history and unusual-visit samples:</strong> up to 90 days, within the limits in <a href="#processing">section 2</a>. Older entries are removed the next time Pryglass saves history.</li>
         <li><strong>Tracker overview:</strong> up to 30 days.</li>
-        <li><strong>Watchlist, block rules and settings:</strong> until you remove or change them, or remove the app.</li>
+        <li><strong>Watched sites, block rules and settings:</strong> until you remove or change them, or remove the app.</li>
+        <li><strong>The Pryglass app's rating-prompt values:</strong> until you delete the app.</li>
       </ul>
 
       <h2 id="delete">8. How to delete your data</h2>
       <p>All data is on your device, so you delete it there. The developer has no copy to delete.</p>
       <ul>
-        <li><strong>Clear the current tab.</strong> Open Pryglass on the page and press <strong>Clear</strong>.</li>
+        <li><strong>Clear the current tab.</strong> Open Pryglass on the page, choose <strong>More</strong>, and under <strong>This page</strong> choose <strong>Clear list</strong>.</li>
         <li>
-          <strong>Delete saved history.</strong> In Pryglass, open <strong>Options</strong> and choose
-          <strong>Delete saved history</strong>. This removes all saved site history, change alerts, the tracker overview
-          and anomaly samples on that device. It keeps your block rules, watchlist and settings, and tells you so before
-          you confirm.
+          <strong>Delete saved history.</strong> Open Pryglass in Safari, choose <strong>More</strong>, and under
+          <strong>Your data</strong> choose <strong>Delete saved history</strong>. This removes all saved site history,
+          change alerts, the tracker overview and unusual-visit samples on that device. It keeps your blocked domains,
+          watched sites and settings, and tells you so before you confirm.
         </li>
-        <li><strong>Remove block rules and watched sites</strong> one by one with <strong>Remove</strong>, or all at once with <strong>Clear all</strong>.</li>
-        <li><strong>Turn off Local anomaly check</strong> in Options to delete its samples and stop collecting them.</li>
+        <li><strong>Remove blocked domains</strong> in <strong>More &gt; Blocked domains</strong>, one by one with <strong>Unblock</strong> or all at once with <strong>Unblock all</strong>. <strong>Remove watched sites</strong> in <strong>More &gt; Watched sites</strong> with <strong>Remove</strong>.</li>
+        <li><strong>Turn off Spot unusual visits</strong> in <strong>More &gt; Options</strong> to delete its samples and stop collecting them.</li>
         <li>
           <strong>Remove the app.</strong> On iPhone and iPad, delete the Pryglass app. On Mac, choose
           <strong>Safari &gt; Settings &gt; Extensions</strong>, select Pryglass and click <strong>Uninstall</strong>,
@@ -289,12 +296,22 @@
       <h2 id="you-share">9. Things you choose to share</h2>
       <ul>
         <li>
-          <strong>Reports.</strong> <strong>Copy report</strong> puts a report of the current page on your clipboard, and
-          the other export options save or copy the same details. Pryglass does this only when you ask and sends it
-          nowhere. A report can contain full request addresses, including query strings, which sometimes carry
-          identifiers, and the names of form fields you used. Check it before you share it with anyone.
+          <strong>Summaries and data you copy or save.</strong> <strong>Copy summary</strong> puts a readable summary of
+          the current page on your clipboard; <strong>Copy data (JSON)</strong> copies the recorded events for the current tab;
+          <strong>Copy URL</strong> copies one request address; and <strong>Copy check details</strong> or
+          <strong>Save check details</strong> copies or saves the unusual visit check as a file (on iPhone and iPad
+          through the share sheet). Pryglass does this only when you ask and sends it nowhere. A summary contains the
+          page's full address and the names of form fields you used; the JSON data also contains full request
+          addresses. Addresses can include query strings, which sometimes carry identifiers. Check what you copied before
+          you share it with anyone.
         </li>
-        <li><strong>Links you open.</strong> If you choose to open a request address or the App Store rating page from Pryglass, Safari opens it in a new tab like any other link.</li>
+        <li>
+          <strong>Links you open.</strong> <strong>Help and support</strong>, <strong>Privacy policy</strong>,
+          <strong>How to allow Pryglass</strong> and <strong>Rate Pryglass</strong> in the extension open these pages or
+          the App Store in a new Safari tab, like any other link. The Pryglass app's links open Safari, Mail or the App
+          Store. Pryglass never opens a request address itself, because that would send the request again; it only lets
+          you copy it.
+        </li>
         <li><strong>Emails to support</strong> are covered in <a href="#support-email">section 11</a>.</li>
       </ul>
 
@@ -307,11 +324,17 @@
         developers, statistics and crash reports that Apple prepares. The developer uses these only to understand sales
         and fix problems. Pryglass itself sends Apple nothing.
       </p>
+      <p>
+        Now and then, after you have set Pryglass up, the Pryglass app may ask Apple to show its standard rating
+        request, at most once per app version. Apple decides whether to show it, and the developer does not learn
+        whether it appeared. If you rate or review Pryglass, that happens in Apple's App Store under Apple's terms, and
+        the developer sees only what the App Store publishes. The extension never asks for a rating.
+      </p>
 
       <h2 id="support-email">11. If you contact support</h2>
       <p>
         If you email <a href="mailto:andreas.nelvik.engebretsen@gmail.com">andreas.nelvik.engebretsen@gmail.com</a>, I receive your email address, your message
-        and anything you attach, such as screenshots or a copied report. I use this only to answer you and to fix the
+        and anything you attach, such as screenshots or a copied summary. I use this only to answer you and to fix the
         problem you describe. Writing to me is voluntary, but I need your email address to reply. The legal basis is my legitimate interest in answering your request and improving the app
         (GDPR Article 6(1)(f)), or, where your message concerns something you bought, providing the product you paid for
         (Article 6(1)(b)).
