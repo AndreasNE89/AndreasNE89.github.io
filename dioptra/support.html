@@ -155,11 +155,15 @@
 <p>What version 1.2 is planned to change: when you run Reclaim Space on a
 folder, it skips any version-control folder inside it (<code>.git</code>,
 <code>.svn</code> or <code>.hg</code>; a project's own files around it are
-still scanned), the Trash, and your home Library folder. It skips them only
-where it meets them inside the folder you scan, so even in 1.2, don't start
-Reclaim from inside Library, the Trash or a <code>.git</code> folder. It no
-longer offers photo, music or video libraries, or Final Cut, GarageBand and
-Logic projects, as large files you haven't touched. Every item expands to show
+still scanned), the Trash, and your home Library folder. It also skips iPhone
+and iPad backups, wherever they are and whatever they are called, and it never
+offers a photo, music or video library, or a Final Cut, GarageBand, Logic or
+MainStage project, or anything inside one. If you start Reclaim inside a
+<code>.git</code>, <code>.svn</code> or <code>.hg</code> folder, the Trash, one
+of those libraries or projects, or a backup, it offers nothing. Your Library
+folder is different: Reclaim skips it only when it meets it inside the folder
+you scan. Started inside Library, it scans it like any other folder, so even in
+1.2, don't start Reclaim from inside Library. Every item expands to show
 the exact files, and a set of duplicates says which copy it keeps and where.
 ⌘Z and ⌘⌫ in a text field act on the text. The list is still yours to read
 before anything goes: look it over before you trash it.</p>
@@ -211,9 +215,10 @@ Folder sizes:</p>
   <li><strong>When I ask</strong> (the default in 1.0 and 1.1): every folder
   shows “—” until you right-click it and choose <strong>Calculate Size</strong>,
   which measures the whole folder.</li>
-  <li><strong>Automatically</strong>: folders are measured as they come into
-  view, but Dioptra gives up on very large ones rather than freezing while it
-  counts. Those show “—” until you choose Calculate Size.</li>
+  <li><strong>Automatically</strong> (planned to be the default from 1.2, unless
+  you chose another setting): folders are measured as they come into view. A
+  folder with more than 5,000 items inside shows “—” until you choose Calculate
+  Size.</li>
   <li><strong>Never</strong>: the Size column always shows “—”, and the file
   list does not offer Calculate Size.</li>
 </ul>
