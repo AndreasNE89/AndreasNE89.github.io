@@ -28,15 +28,18 @@ notes against each known issue first.
 
 Until a 1.2 build has passed the app's `docs/TEST_ROUTINE.md`, both pages describe 1.2 as planned, not as
 fact: the support page's "planned for version 1.2" sentences (known issues, the Reclaim paragraph, "at
-least" in the Space answer) and the policy's "Ratings and reviews" section. When 1.2 ships, re-check each
-against the shipped build before rewording it as fact. For the ratings text in particular: whether the
-prompt exists and how often it can appear, whether Rate Dioptra… opens the App Store app (an `https` link
-opens the default browser), and what the app stores to decide when to ask. Also move "which Dioptra 1.1
-opens" in the policy to whatever 1.2's Help ▸ Privacy Policy actually opens.
+least" in the Space answer, "planned to be the default from 1.2" for folder sizes) and the policy's
+"Ratings and reviews" section. When 1.2 ships, re-check each against the shipped build before rewording it
+as fact. For the ratings text in particular: whether the prompt exists and how often it can appear, whether
+Rate Dioptra… opens the App Store app (an `https` link opens the default browser), and what the app stores
+to decide when to ask. 1.2's Help ▸ Privacy Policy opens `/dioptra/privacy.html` (`AppCommands.privacyPolicyURL`
+in the app), so the policy's "`/dioptra/`, which Dioptra 1.1 opens" stays true; at most, add that 1.2 opens
+`privacy.html`.
 
-The support page tells users not to start Reclaim Space from inside Library, the Trash or a `.git` folder,
-because 1.2 skips those folders only when the scan meets them below its starting folder. If the app is
-changed to refuse such a starting folder, that sentence can go.
+In 1.2, a Reclaim started inside a `.git`, `.svn` or `.hg` folder, the Trash, a media library or project
+bundle, or a device backup offers nothing (`SpaceAnalyzer.isWithinProtectedFolder`). The home Library is
+deliberately left out of that check, so the support page still says not to start Reclaim from inside
+Library. That sentence can go only once the app refuses a Library starting folder too.
 
 The policy's support-email, website and rights sections are adapted from Pryglass's policy
 (`/pryglass/privacy.html`, sections 1 and 11 to 13) and describe the same mailbox. Keep the retention period
