@@ -41,3 +41,10 @@ changed to refuse such a starting folder, that sentence can go.
 The policy's support-email, website and rights sections are adapted from Pryglass's policy
 (`/pryglass/privacy.html`, sections 1 and 11 to 13) and describe the same mailbox. Keep the retention period
 and the legal basis in step between the two.
+
+They differ on one sentence, where the emails are kept. Pryglass's section 11 says the mailbox is hosted by
+a provider "acting on my behalf" and that Standard Contractual Clauses protect any transfer outside the EEA.
+Dioptra's says only that the provider holds the emails under its own terms and may store them outside the
+EEA, because the published address is a consumer Gmail account, which comes with no data processing
+agreement, so neither claim could be shown to hold. Which mailbox support uses, and whether it has such an
+agreement, is the owner's decision; once it is made, give both policies the same sentence.
