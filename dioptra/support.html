@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support — Dioptra</title>
-<meta name="description" content="Support for Dioptra, a file manager for macOS. Contact, and answers to the questions that come up first.">
+<meta name="description" content="Support for Dioptra, a file manager for macOS: contact, known issues, requirements, and answers to the questions that come up first.">
+<link rel="canonical" href="https://andreasne89.github.io/dioptra/support.html">
 <style>
   :root {
+    color-scheme: light dark;
     --bg: #ffffff; --surface: #f6f8f9; --text: #12242a; --muted: #5b6f77;
-    --rule: #dfe6e9; --teal: #0A6B7C; --amber: #C98C22;
+    --rule: #dfe6e9; --teal: #0A6B7C; --amber: #C98C22; --amber-ink: #9A6B12;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #0d1719; --surface: #142226; --text: #e6edef; --muted: #9bb0b7;
-      --rule: #24373c; --teal: #4fb3c7; --amber: #E8A93C;
+      --rule: #24373c; --teal: #4fb3c7; --amber: #E8A93C; --amber-ink: #E8A93C;
     }
   }
   * { box-sizing: border-box; }
@@ -36,16 +39,25 @@
   h2:first-of-type { margin-top: 0; }
   ul { padding-left: 1.15rem; }
   li { margin: .35rem 0; }
-  a { color: var(--teal); text-underline-offset: 2px; }
+  a { color: var(--teal); text-underline-offset: 2px; overflow-wrap: anywhere; }
+  a:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 2px; }
   strong { font-weight: 600; }
-  .contact {
+  .contact, .alert {
     background: var(--surface); border: 1px solid var(--rule);
     border-left: 3px solid var(--amber); border-radius: 8px;
     padding: 1.1rem 1.25rem; margin: 0 0 2rem;
   }
   .contact p { margin: 0; }
   .contact a { font-weight: 600; }
-  .q { font-weight: 600; margin: 1.6rem 0 .3rem; }
+  .alert { margin: 0 0 1rem; }
+  .alert p { margin: 0; }
+  .q { font-size: 1rem; font-weight: 600; margin: 1.6rem 0 .3rem; }
+  .version { color: var(--muted); font-size: .95rem; }
+  code {
+    font: .9em/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 5px; padding: .1em .35em;
+  }
   kbd {
     font: .85em/1 ui-monospace, SFMono-Regular, Menlo, monospace;
     background: var(--surface); border: 1px solid var(--rule);
@@ -56,6 +68,17 @@
     color: var(--muted); font-size: .9rem;
   }
   footer a { color: var(--muted); }
+  @media print {
+    :root {
+      --bg: #ffffff; --surface: #ffffff; --text: #000000;
+      --muted: #333333; --rule: #bbbbbb;
+      --teal: #000000; --amber: #666666; --amber-ink: #000000;
+    }
+    body { padding: 0; font-size: 11pt; }
+    header { padding-top: 0; }
+    h2, .q { break-after: avoid; page-break-after: avoid; }
+    .contact, .alert, li, p { break-inside: avoid; page-break-inside: avoid; }
+  }
 </style>
 </head>
 <body>
@@ -87,60 +110,175 @@
   </div>
 </header>
 
+<main>
+
 <div class="contact">
   <p>Questions, bugs, and requests:
   <a href="mailto:andreas.nelvik.engebretsen@gmail.com">andreas.nelvik.engebretsen@gmail.com</a><br>
-  Please include your macOS version and what you were doing at the time.</p>
+  Please include your macOS version, your Dioptra version (Dioptra ▸ About
+  Dioptra), and what you were doing at the time.</p>
 </div>
 
-<h2>Questions that come up first</h2>
+<h2 id="known-issues">Known issues in versions 1.0 and 1.1</h2>
+<div class="alert">
+  <p><strong>Until 1.2, check every Reclaim item before trashing it.</strong>
+  Versions 1.0 and 1.1 have two problems that can remove files you meant to
+  keep. Both are fixed in version 1.2, the next update. Until you have it:</p>
+</div>
+<ul>
+  <li><strong>Reclaim Space can suggest files it should leave alone:</strong>
+  duplicates inside a project's <code>.git</code> folder, a “kept” copy that is
+  itself in the Trash, and iPhone backups and other data in your Library folder.
+  Look at every item before you trash it, including the ones Select Safe Items
+  ticks. Reclaim scans the folder you are browsing, so run it on a folder such as
+  Downloads rather than on your whole home folder, which is the scan that reaches
+  the Trash and Library. Untick anything in <code>.git</code>, the Trash or
+  <code>Library</code>, and anything you don't recognise. Each item shows only
+  one folder, even when its files are in several, so if you can't tell where an
+  item's files are, leave it unticked. Reclaim moves files to the Trash rather
+  than deleting them, so if something went that shouldn't have, look there before
+  you empty it.</li>
+  <li><strong>Don't press ⌘Z or ⌘⌫ while typing in a field.</strong> In a rename
+  field, the address bar or the search field, ⌘Z undoes your last file operation
+  instead of your typing (a move is reversed, or a folder you just made goes to
+  the Trash), and ⌘⌫ moves the selected files to the Trash. Press Esc to leave a
+  rename field, or click in the file list, before you press ⌘Z. To clear text,
+  use ⌫.</li>
+</ul>
+<p>In 1.2, Reclaim Space no longer looks inside repositories, the Trash or your
+Library folder. It no longer offers photo, music or video libraries, or
+Final Cut, GarageBand and Logic projects, as large files you haven't touched.
+Every item expands to show the exact files, and a set of duplicates says which
+copy it keeps and where. ⌘Z and ⌘⌫ in a text field act on the text. The list
+is still yours to read before anything goes: look it over before you trash
+it.</p>
 
-<p class="q">Dioptra is empty when I open it. Is it broken?</p>
+<h2 id="requirements">Requirements</h2>
+<p>Dioptra runs on macOS 26 or later, and its interface is in English. Organize,
+and the short written summary in Reclaim Space, need Apple Intelligence, on a Mac
+that supports it and with it turned on in System Settings. Everything else works
+without it.</p>
+<p>Dioptra is on the
+<a href="https://apps.apple.com/app/id6796373724" rel="noreferrer">Mac App Store</a>,
+where the version history lists what changed in each release. To see which
+version you have, choose Dioptra ▸ About Dioptra.</p>
+
+<h2 id="faq">Questions that come up first</h2>
+
+<h3 class="q" id="empty">Dioptra is empty when I open it. Is it broken?</h3>
 <p>No — that is by design. Dioptra is sandboxed and begins with access to
-nothing at all. On first launch it shows a welcome screen with a single button
-that opens the standard macOS folder picker. Whatever folder you choose becomes
-the part of your disk Dioptra can read, and it is remembered the next time you
-launch. You can add more folders at any time, and remove them just as easily.</p>
+nothing at all. On first launch it asks for a folder: one button offers your
+home folder, another lets you choose a different one, and both open the
+standard macOS folder picker. Whatever folder you choose there becomes the part
+of your disk Dioptra can read, and it is remembered the next time you launch. If
+you chose <strong>Skip for Now</strong>, or want more, use <strong>Add
+Location…</strong> in the sidebar; Settings ▸ Locations lists what you have
+granted and removes it just as easily.</p>
 <p>This is deliberate. A file manager that quietly helped itself to your whole
 home directory would be easier to write and much harder to trust.</p>
 
-<p class="q">Why can't it open some folder I picked a while ago?</p>
-<p>If the folder was moved, renamed, or lived on a disk that is no longer
-connected, the saved permission no longer points anywhere. Add the folder again
-from the sidebar and it will work.</p>
-
-<p class="q">Folder sizes show “—” instead of a number.</p>
-<p>Measuring a folder means walking everything inside it, so Dioptra budgets that
-work rather than freezing while it counts an enormous tree. When a folder exceeds
-the budget it shows “—” instead of guessing. You can always measure one
-explicitly from its context menu, or open <strong>Space</strong> view, which maps
-the whole folder as rectangles sized by what they actually use.</p>
-
-<p class="q">The folder tree shows “… and N more”.</p>
-<p>The navigation tree draws at most 400 items per folder so it stays responsive.
-When there are more, it says so rather than silently hiding them, and clicking
-that row opens the folder in the main list, which has no limit.</p>
-
-<p class="q">Dragging from Photos or Mail does nothing.</p>
-<p>Those apps hand over a promise of a file rather than a file, and Dioptra does
-not accept promised files yet. Dragging from Finder, or from any app that
-provides a real file, works normally. This is a known gap.</p>
-
-<p class="q">Some shortcuts worth knowing</p>
+<h3 class="q" id="regrant">Why can't it open some folder I picked a while ago?</h3>
+<p>Dioptra remembers each folder you grant as a macOS bookmark. The bookmark
+follows the folder if you rename it or move it elsewhere on the same disk, and
+Dioptra picks up the new place the next time it launches. It stops working
+when:</p>
 <ul>
-  <li><kbd>⌘⇧P</kbd> — jump to any folder by typing part of its name</li>
-  <li><kbd>⌘⇧\</kbd> — split the tab into two panes</li>
-  <li><kbd>⌥⇥</kbd> — move focus to the other pane</li>
-  <li><kbd>⌘Z</kbd> — undo the last file operation, including moves and deletes</li>
-  <li><kbd>↩</kbd> — rename; with more than one file selected, opens batch rename</li>
+  <li><strong>The disk or server is not connected.</strong> Nothing is lost:
+  connect it again. If the folder still shows as locked or not connected, quit
+  and reopen Dioptra with the disk connected. There is no need to grant it
+  again.</li>
+  <li><strong>The folder was deleted or moved to another disk, or the disk was
+  erased or replaced.</strong> The saved permission no longer points anywhere.
+  Grant the folder again with <strong>Add Location…</strong> in the sidebar, or
+  <strong>Grant Again…</strong> in Settings ▸ Locations.</li>
 </ul>
 
-<h2>Privacy</h2>
+<h3 class="q" id="folder-sizes">Folder sizes show “—” instead of a number.</h3>
+<p>What the Size column shows for a folder depends on Settings ▸ General ▸
+Folder sizes:</p>
+<ul>
+  <li><strong>When I ask</strong> (the default in 1.0 and 1.1): every folder
+  shows “—” until you right-click it and choose <strong>Calculate Size</strong>,
+  which measures the whole folder.</li>
+  <li><strong>Automatically</strong>: folders are measured as they come into
+  view, but Dioptra gives up on very large ones rather than freezing while it
+  counts. Those show “—” until you choose Calculate Size.</li>
+  <li><strong>Never</strong>: the Size column always shows “—”, and the file
+  list does not offer Calculate Size.</li>
+</ul>
+<p>In every mode, the <strong>Space</strong> view (View ▸ Space) draws the
+folder as a map of blocks sized by the space each item takes.</p>
+
+<h3 class="q" id="storage">Why is the Space map smaller than Storage in System Settings?</h3>
+<p>They measure different things. Storage in System Settings counts the whole
+disk. The Space view maps only the folder you are browsing, and Dioptra can only
+see folders you have granted. macOS itself, your apps, System Data and snapshots
+are outside a map of your home folder, and so is your Library folder, which is
+hidden: hidden items are left out unless View ▸ Show Hidden Files is on. On a
+very large folder the map also stops counting at 200,000 items, so its total is
+a lower bound; version 1.2 says “at least” in front of it. Dioptra can't shrink
+System Data or snapshots.</p>
+
+<h3 class="q" id="tree-more">The folder tree shows “N more items…”.</h3>
+<p>The navigation tree draws at most 400 items per folder so it stays responsive.
+When there are more, it says how many it left out rather than silently hiding
+them, and clicking that row opens the folder in the main list, which has no
+limit.</p>
+
+<h3 class="q" id="photos-mail">Can I drag photos from Photos, or attachments from Mail?</h3>
+<p>Yes, from version 1.1. Those apps hand over a promise of a file rather than
+a file, and 1.1 and later accept promised files: drop a photo from Photos or an
+attachment from Mail on the file list, and it is copied into the folder you are
+browsing, with a progress ticket and undo like any other copy.</p>
+<p class="version">In version 1.0 the drop does nothing. Update to the current
+version, or save the file first (File ▸ Export in Photos, or save the attachment
+in Mail) and drag the saved file in.</p>
+
+<h3 class="q" id="shortcuts">Some shortcuts worth knowing</h3>
+<ul>
+  <li><kbd>⌘⇧P</kbd> — Quick Jump: go to any folder by typing part of its
+  name</li>
+  <li><kbd>⌘⇧\</kbd> — split the tab into two panes</li>
+  <li><kbd>⌥⇥</kbd> — move focus to the other pane</li>
+  <li><kbd>F2</kbd> — rename; with several files selected, batch rename. On most
+  Mac keyboards, hold <kbd>Fn</kbd> and press <kbd>F2</kbd>, or choose File ▸
+  Rename.</li>
+  <li><kbd>F5</kbd> / <kbd>F6</kbd> — with two panes open, copy or move the
+  selection to the other pane (with <kbd>Fn</kbd> on most Mac keyboards)</li>
+  <li><kbd>↩</kbd> — open the selection; with several files selected, every one
+  of them opens</li>
+  <li><kbd>⌘Z</kbd> — undo the last file operation, including moves and Move to
+  Trash. Delete Permanently cannot be undone. In 1.0 and 1.1, leave any text
+  field first (see <a href="#known-issues">known issues</a>).</li>
+</ul>
+
+<h2 id="refunds-removal">Refunds and removal</h2>
+
+<h3 class="q" id="refund">Can I have a refund?</h3>
+<p>Refunds are Apple's to give rather than mine. Every App Store purchase goes
+through Apple, so I never see your payment details and have no way to look up
+what you bought. Ask Apple at reportaproblem.apple.com, signed in with the Apple
+Account you bought Dioptra with.</p>
+
+<h3 class="q" id="remove">How do I remove Dioptra completely?</h3>
+<p>Drag the app to the Trash. That removes the app but not the container macOS
+keeps for it: deleting a sandboxed app leaves its container behind. It is the
+folder <code>~/Library/<wbr>Containers/<wbr>App.andreas.Filefy</code> (the
+identifier dates from before the app was called Dioptra; Finder may list the
+folder as Dioptra). Deleting that folder removes everything the app ever stored,
+including the security-scoped bookmarks recording which folders you granted
+access to. There is no copy anywhere else, because nothing was ever sent
+anywhere else.</p>
+
+<h2 id="privacy">Privacy</h2>
 <p>Dioptra collects nothing and has no network access at all. The full policy is
-on the <a href="index.html">privacy page</a>.</p>
+on the <a href="privacy.html">privacy page</a>.</p>
+
+</main>
 
 <footer>
-  <p>Dioptra for macOS · <a href="index.html">Privacy Policy</a></p>
+  <p>Dioptra for macOS · <a href="privacy.html">Privacy Policy</a> ·
+  <a href="https://apps.apple.com/app/id6796373724" rel="noreferrer">Mac App Store</a></p>
   <p>This page loads no scripts, no fonts, no images and no trackers from
   anywhere. It is a single file.</p>
 </footer>
