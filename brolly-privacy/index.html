@@ -20,33 +20,54 @@
       th { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
       code { font-size: 0.9em; }
       .lede { font-size: 1.05rem; }
+      /* The greys above are for a light page. On a dark one #6b7280 fell to about 3.7:1, too
+         faint for the line that says which version of the policy this is. */
+      @media (prefers-color-scheme: dark) {
+        .updated { color: #9ca3af; }
+        th, td { border-bottom-color: #4b5563; }
+      }
     </style>
   </head>
   <body>
     <!-- SOURCE OF TRUTH. Two copies are derived from this file:
            * dist/privacy.html — bundled into the extension by scripts/build.mjs
-           * index.html in the public AndreasNE89/brolly-privacy repo, served at
-             https://andreasne89.github.io/brolly-privacy/ (the URL the Web Store
+           * brolly-privacy/index.html in the public hub repo AndreasNE89/AndreasNE89.github.io,
+             served at https://andreasne89.github.io/brolly-privacy/ (the URL the Web Store
              requires; Pages needs a public repo and this one is private)
-         Edit here, then copy to brolly-privacy and push, or the hosted policy
-         drifts from the one inside the extension. -->
+         Edit here, then run `npm run privacy:sync`, or the hosted policy drifts from
+         the one inside the extension. -->
     <h1>Brolly — Privacy Policy</h1>
-    <p class="updated">Last updated: 31 July 2026</p>
+    <p class="updated">Last updated: 29 September 2026</p>
 
     <p class="lede">
-      Brolly has no accounts, no advertising, no analytics, and no trackers. Free
-      installs store nothing that identifies you. If you buy the optional one-time
-      upgrade, the payment library keeps the email address you paid with in your
-      browser — that is the only personal information Brolly ever holds, and it is
-      described in the table below. Every request the extension makes goes to a
-      single server of ours; this page explains each of them, and exactly what each
-      one contains.
+      Brolly has no accounts, no advertising, no analytics, and no trackers. Weather
+      and city-search requests go to a single server of ours; this page explains each
+      of them, and exactly what each one contains. The one exception is the optional
+      one-time upgrade, which is handled by a payment service, ExtensionPay
+      (extensionpay.com). The extension contacts ExtensionPay only after you have
+      opened the upgrade's checkout page or its login page, and those requests are
+      described under &ldquo;The optional purchase&rdquo; below. If you never open
+      either page, nothing Brolly stores identifies your install. If you do,
+      ExtensionPay issues a random key for this install, which is kept in your
+      browser; if you then buy, the email address you paid with is kept there too.
+      Those two are the only identifiers Brolly ever holds, and the email is the only
+      personal information. Both are in the table below.
     </p>
 
     <h2>What the extension stores, and where</h2>
     <p>
-      Everything is stored in your browser, using Chrome's own extension storage. None
-      of it is sent to us.
+      Everything is stored in your browser, using Chrome's own extension storage. No
+      copy of it is uploaded to us. Two stored items do take part in requests to our
+      server, and each is described where its request is: the coordinates of a city,
+      which are rounded to two decimals before they leave your browser (see
+      &ldquo;On precision&rdquo; below), and the publication time of the forecast you
+      already hold, which is sent back exactly as it is stored (see &ldquo;The requests
+      it makes&rdquo;). The only stored item Brolly sends to anyone other than us is the
+      payment library's key, which goes to ExtensionPay and only to ExtensionPay, as
+      described under &ldquo;The optional purchase&rdquo;. If
+      Chrome Sync is on, Chrome copies whatever is in <code>chrome.storage.sync</code>
+      to your Google account so your other computers receive it; that copy is handled
+      by Google under its own privacy policy, not by us.
     </p>
     <table>
       <tr><th>Data</th><th>Where</th><th>Why</th></tr>
@@ -69,20 +90,50 @@
         them, without waiting for the network.</td>
       </tr>
       <tr>
+        <td>A short weather memory for each saved city, kept since you added it: the
+        warmest reading Brolly has seen there, the dates of the last two frosts, and the
+        longest dry spell</td>
+        <td><code>chrome.storage.local</code></td>
+        <td>So the popup can say things like &ldquo;first frost since March&rdquo;. It
+        stays on this device, is never sent anywhere, and is deleted when you remove the
+        city.</td>
+      </tr>
+      <tr>
         <td>The pressure mark you set by tapping the barometer</td>
         <td><code>chrome.storage.local</code></td>
         <td>So the dial can show which way pressure has moved since you set it. It is
         kept per city, on this device only, and is deliberately not synced.</td>
       </tr>
       <tr>
-        <td><strong>If — and only if — you buy the optional one-time upgrade:</strong> the
-        email address you paid with, and the fact that you paid, held by the payment
-        library (ExtensionPay)</td>
+        <td><strong>If — and only if — you open the upgrade's checkout page or its login
+        page:</strong> a random key that ExtensionPay issues for this install, held by the
+        payment library (ExtensionPay)</td>
+        <td><code>chrome.storage.sync</code></td>
+        <td>It links this browser to the record ExtensionPay keeps of any purchase. It is
+        created when you first open either page, whether or not you go on to buy, and it
+        is sent only to extensionpay.com, as described under &ldquo;The optional
+        purchase&rdquo;.</td>
+      </tr>
+      <tr>
+        <td><strong>Once that key exists:</strong> ExtensionPay's last answer about it —
+        whether it has been paid for and when, and, <strong>if and only if you
+        bought</strong>, the email address you paid with — held by the payment library</td>
         <td><code>chrome.storage.sync</code></td>
         <td>So that the features you bought stay unlocked, and so you can restore them on
         another computer by asking for a login link. Your card details never reach this
         extension or us — payment happens on Stripe's own checkout page. If you never buy
         anything, no email is ever stored.</td>
+      </tr>
+      <tr>
+        <td>Brolly's own note of that answer: whether the upgrade was paid for, when that
+        was last confirmed, when ExtensionPay was last asked and whether asking failed,
+        and — for two hours after you open the checkout or login page — a reminder to ask
+        again sooner</td>
+        <td><code>chrome.storage.local</code></td>
+        <td>So the upgrade keeps working for up to 30 days when ExtensionPay cannot be
+        reached, so ExtensionPay is asked about once a day rather than on every refresh,
+        and so a purchase you have just made is noticed within minutes. It holds no email
+        and no key, and it stays on this device.</td>
       </tr>
       <tr>
         <td>The date this extension was installed, written by the payment library
@@ -95,18 +146,25 @@
       </tr>
       <tr>
         <td>Bookkeeping that keeps the rest working: which city the badge is currently
-        following, which warnings you have already been notified about, and whether the
-        last refresh for a city failed</td>
+        following, which warnings you have already been notified about and until when
+        each was forecast to last, whether the last refresh for a city failed, when the
+        last official-warning check for a city failed, when the last geomagnetic-forecast
+        request failed, and whether a settings change is still waiting to be copied to
+        <code>chrome.storage.sync</code></td>
         <td><code>chrome.storage.local</code></td>
         <td>So a change of home city is noticed and refetched, rather than left showing
-        the previous city's temperature; so a notification is not repeated; and so the
-        popup can tell you when a check failed instead of showing an old reading as
-        though it were current.</td>
+        the previous city's temperature; so a notification is not repeated; so the popup
+        can tell you when a check failed instead of showing an old reading as though it
+        were current; so a request that just failed is not repeated every time you open
+        the popup; and so a settings change that could not reach Chrome Sync is kept and
+        sent again rather than lost.</td>
       </tr>
     </table>
     <p>
-      Nothing Brolly stores falls outside that table. Uninstalling the extension
-      removes all of it, and no copy of it exists on any server of ours.
+      Nothing Brolly stores in your browser falls outside that table. Uninstalling the
+      extension removes all of it, and no copy of it exists on any server of ours.
+      ExtensionPay keeps its own record of any key it has issued and of any purchase,
+      on its own servers.
     </p>
     <p>
       <strong>On precision.</strong> A saved city is held at the coordinates the place
@@ -114,9 +172,10 @@
       those same coordinates so that one city's data is told apart from another's. That
       is finer than the two decimals a request carries, and the difference is
       deliberate: these coordinates identify a town in a public place list rather than
-      a position of yours, they are a label on your own disk, and the labels themselves
-      are never sent anywhere. Every request rounds to two decimals first, as described
-      below.
+      a position of yours. Brolly never sends them to us or to any weather service:
+      every request rounds to two decimals first, as described below. If Chrome Sync is
+      on, Chrome copies your settings, including these coordinates, to your Google
+      account, as described above.
     </p>
 
     <h2>What we never ask for</h2>
@@ -132,11 +191,12 @@
         website.
       </li>
       <li>
-        <strong>Your identity.</strong> There is no account and no sign-in. If you buy
-        Brolly Pro, our payment provider stores the email address you used at checkout,
-        so the purchase can be restored on another computer — that is the only
-        identifier involved, it applies only to buyers, and it is listed in the table
-        above. If you buy nothing, no identifier exists.
+        <strong>Your identity.</strong> There is no account and no sign-in. If you open
+        the upgrade's checkout or login page, our payment provider issues a random key
+        for this install. If you buy Brolly Pro, it also stores the email address you
+        used at checkout, so the purchase can be restored on another computer. Those are
+        the only identifiers involved, and both are listed in the table above. If you
+        never open either page, no identifier exists.
       </li>
     </ul>
 
@@ -165,8 +225,12 @@
       </li>
     </ul>
     <p>
-      That is the entire payload of a forecast request. There is no identifier, no
-      cookie, and nothing linking one request to another.
+      That is everything Brolly puts in a forecast request. Your browser also adds the
+      standard headers it attaches to every request: its name and version and your
+      operating system (<code>User-Agent</code>), your preferred languages
+      (<code>Accept-Language</code>), and Brolly's extension id (<code>Origin</code>),
+      which is the same for every Brolly user. There is no identifier, no cookie, and
+      nothing linking one request to another.
     </p>
     <p>
       <strong>We keep no logs of it.</strong> The server stores cached forecasts keyed
@@ -208,6 +272,47 @@
       under the search term, or — for the planetary figures — under a single fixed
       address that carries nothing about you. Never under an IP address, and never under
       a user.
+    </p>
+
+    <h2>The optional purchase</h2>
+    <p>
+      The one-time upgrade is sold through ExtensionPay
+      (<a href="https://extensionpay.com/">extensionpay.com</a>), a payment service for
+      browser extensions; the payment itself is taken by Stripe on its own checkout
+      page. These are the only requests Brolly makes to anyone other than our own
+      server, and none of them happens until you start it:
+    </p>
+    <ul>
+      <li>
+        <strong>When you click to buy the upgrade, or to restore one you already
+        bought</strong>, and this install has no key yet, the extension asks
+        extensionpay.com for one. That request carries nothing else, except that a
+        developer's test copy of the extension says it is one. The key that comes back
+        is random, and is kept in <code>chrome.storage.sync</code> as listed in the
+        table. The page you asked for then opens on extensionpay.com with that key in
+        its address.
+      </li>
+      <li>
+        <strong>Once a key exists</strong>, the extension asks extensionpay.com whether
+        it has been paid for. That request carries the key. It is made about once a day;
+        at most every two minutes during the two hours after you open the checkout or
+        login page, so that a purchase is noticed quickly; when you press Refresh in the
+        popup while nothing on record unlocks the paid tier (no purchase, a refund, or a
+        purchase not confirmed for 30 days); and, after an attempt that failed, again
+        three hours later. The answer is stored as listed in the table.
+      </li>
+      <li>
+        <strong>Without a key, nothing is asked.</strong> The payment library answers
+        &ldquo;not paid&rdquo; from inside your browser, and no request is sent.
+      </li>
+    </ul>
+    <p>
+      These requests go from your browser straight to ExtensionPay, not through our
+      server, so ExtensionPay receives your IP address and the standard headers your
+      browser adds, as well as the key. ExtensionPay keeps its own record of the keys it
+      issues and of purchases. The checkout and login pages are ExtensionPay's and
+      Stripe's own websites, and what you enter there is handled under their own privacy
+      policies.
     </p>
 
     <h2>Who else is involved</h2>
@@ -262,13 +367,21 @@
       machine from the forecast and the official warnings already stored there. Nothing
       is sent anywhere to produce them, and no push service is involved.
     </p>
+    <p>
+      Clicking a notification about an official warning opens that warning's own page
+      on the issuing service's website (MET Norway's or the US National Weather
+      Service's) in a new tab, when the warning came with one. That is an ordinary
+      visit to their website from your browser. Clicking a notification about Brolly's
+      own estimate only dismisses it.
+    </p>
 
     <h2>Children</h2>
     <p>
-      Brolly is not directed at children. Free installs collect no personal
-      information from anyone, of any age. The only personal information that can
-      ever appear — a buyer's email, held in the browser by the payment library —
-      comes from an optional purchase a parent or guardian would have to make.
+      Brolly is not directed at children. It collects no personal information from
+      anyone, of any age, who does not buy the upgrade. The only personal information
+      that can ever appear — a buyer's email, held in the browser by the payment
+      library — comes from an optional purchase a parent or guardian would have to
+      make.
     </p>
 
     <h2>Changes</h2>
@@ -278,6 +391,38 @@
       record.
     </p>
     <ul>
+      <li>
+        <strong>29 September 2026</strong> — corrections, and two changes to what the
+        extension does.
+        <em>Corrections.</em> This policy said that every request goes to our own server
+        and that no identifier exists unless you buy. Neither was accurate while the
+        upgrade was on sale: opening its checkout or login page makes the extension
+        contact ExtensionPay directly, and ExtensionPay issues a random key for the
+        install whether or not you buy. A new section, &ldquo;The optional
+        purchase&rdquo;, describes those requests, and the table now lists that key,
+        Brolly's own note of the purchase status, and the weather memory kept for each
+        city, none of which it listed before. The paragraph on precision no longer says a
+        saved city's coordinates are never sent anywhere: if Chrome Sync is on, Chrome
+        copies them to your Google account. And the section on requests now names the
+        standard headers your browser adds to every request, which the 31 July note below
+        wrongly said were not sent. The section on what the extension stores said that
+        none of it is sent to us; that was not exact, because two stored items take part in
+        requests to our server. It now says which: the coordinates of a city, rounded to two
+        decimals before they are sent, and the publication time of the forecast you already
+        hold, which is sent back as stored. Both were already listed under &ldquo;The
+        requests it makes&rdquo;, and neither is new.
+        <em>Changes.</em> ExtensionPay is now asked about a purchase about once a day, or
+        more often only for two hours after you open its pages or when you press
+        Refresh while nothing on record unlocks the paid tier; before, an install that
+        had opened checkout without buying asked on every refresh. &ldquo;Nothing on
+        record unlocks the paid tier&rdquo; means no purchase, a refund, or a purchase
+        that has not been confirmed for 30 days; the last case is a buyer whose
+        confirmation has lapsed, who is asked again on Refresh and on the two-minute
+        schedule after opening the login page, so that a restored purchase is noticed.
+        That is the same request as before and it sends nothing new; what changed is
+        only that such a buyer is now included on those occasions. And clicking an
+        official warning's notification now opens the issuer's page for that warning.
+      </li>
       <li>
         <strong>31 July 2026</strong> — something small did change about what leaves your
         browser, so it is recorded here. Brolly now shows official MET Norway warnings in
