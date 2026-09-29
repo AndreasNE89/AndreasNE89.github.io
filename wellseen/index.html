@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Wellseen — Inspection reports for anyone</title>
+<meta name="description" content="Wellseen turns a walk through a home, a rental or a job into a clear, dated PDF report with photos. No account, works offline.">
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --surface: #f5f6f7;
+    --text: #1e2227;
+    --muted: #5c636b;
+    --rule: #dde1e5;
+    --link: #1e2227;
+    --brand: #FFC81E;
+    --brand-ink: #7a5a00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15181b;
+      --surface: #1e2227;
+      --text: #eceef0;
+      --muted: #9ba2aa;
+      --rule: #30363d;
+      --link: #FFC81E;
+      --brand: #FFC81E;
+      --brand-ink: #FFC81E;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    padding: 0 1.25rem 5rem;
+  }
+  .wrap { max-width: 42rem; margin: 0 auto; }
+  header {
+    display: flex; align-items: center; gap: .85rem;
+    padding: 3rem 0 1.75rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 2.25rem;
+  }
+  .mark { flex: 0 0 auto; border-radius: 22%; display: block; }
+  header h1 { font-size: 1.35rem; margin: 0; letter-spacing: -0.01em; }
+  header p { margin: .15rem 0 0; color: var(--muted); font-size: .95rem; }
+  nav { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin: -1.25rem 0 2rem; font-size: .95rem; }
+  h2 { font-size: 1.08rem; letter-spacing: -0.005em; margin: 2.5rem 0 .6rem; }
+  h3.q { font-size: 1rem; margin: 1.6rem 0 .3rem; }
+  ul { padding-left: 1.15rem; }
+  li { margin: .35rem 0; }
+  a { color: var(--link); text-underline-offset: 2px; overflow-wrap: anywhere; }
+  a:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 2px; }
+  strong { font-weight: 600; }
+  .lede {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--brand);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+    margin: 0 0 2rem;
+  }
+  .lede p { margin: 0; }
+  .lede p + p { margin-top: .6rem; }
+  code { font: .92em ui-monospace, "SF Mono", Menlo, monospace; background: var(--surface); padding: .05em .3em; border-radius: 4px; }
+  footer {
+    margin-top: 3.5rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted); font-size: .9rem;
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <svg class="mark" width="52" height="52" viewBox="0 0 1024 1024" aria-hidden="true">
+    <rect width="1024" height="1024" rx="225" fill="#1E2227"/>
+    <path d="M292 190 H620 L772 342 V782 A52 52 0 0 1 720 834 H292 A52 52 0 0 1 240 782 V242 A52 52 0 0 1 292 190 Z" fill="#FFC81E"/>
+    <path d="M620 190 V290 A52 52 0 0 0 672 342 H772 Z" fill="#E0A800"/>
+    <path d="M340 560 L452 672 L690 424" fill="none" stroke="#1E2227" stroke-width="72" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div>
+    <h1>Wellseen</h1>
+    <p>Inspection reports for anyone</p>
+  </div>
+</header>
+<nav aria-label="Wellseen pages"><a href="./">About</a><a href="support.html">Support</a><a href="privacy.html">Privacy Policy</a></nav>
+<main>
+<div class="lede">
+  <p><strong>Wellseen turns a walk through a place into a clear, dated PDF report with photos</strong>, so you have a record of what you found and when.</p>
+  <p>It is free to download and use, needs no account, and works offline. Everything stays on your iPhone or iPad until you share a report.</p>
+</div>
+
+<h2 id="who">Who it is for</h2>
+<ul>
+  <li><strong>Renters:</strong> record every room at move-in and move-out, with photos, in case the deposit is questioned.</li>
+  <li><strong>Home buyers:</strong> go through a new home at handover and list what needs fixing.</li>
+  <li><strong>Homeowners and holiday-rental hosts:</strong> keep a dated record of damage, repairs and the state of the place between guests.</li>
+  <li><strong>Independent tradespeople, landlords and maintenance technicians:</strong> punch lists, move-in checks and equipment checks with photo evidence.</li>
+</ul>
+
+<h2 id="how">How it works</h2>
+<ul>
+  <li>Start from a built-in checklist or make your own.</li>
+  <li>Mark each item Pass, Fail or N/A, add photos and mark them up, and type or dictate notes.</li>
+  <li>Sign, and share a PDF with a cover page, a list of everything that needs attention, and your photos.</li>
+</ul>
+
+<h2 id="private">Private by design</h2>
+<p>No account, no ads, no tracking, no server. Dictation and writing help run on the device with Apple's built-in models. Read the <a href="privacy.html">privacy policy</a>.</p>
+
+<h2 id="pro">Free, with optional Pro</h2>
+<p>Inspections, photos and PDF reports are free and unlimited. Wellseen Pro adds your logo on reports without the Wellseen footer, on-device writing help, re-inspection of failed items, and unlimited custom templates. Pro is a monthly or yearly subscription, or a one-time purchase, through your Apple Account.</p>
+
+<p>Wellseen is available in English and Norwegian and needs iOS 26 or later. Questions? See <a href="support.html">Support</a>.</p>
+
+</main>
+
+<footer>
+  <p>Wellseen for iPhone and iPad · <a href="support.html">Support</a> · <a href="privacy.html">Privacy Policy</a><br>
+  Made by Andreas Nelvik Engebretsen, an independent developer in Norway.</p>
+</footer>
+</div>
+</body>
+</html>
