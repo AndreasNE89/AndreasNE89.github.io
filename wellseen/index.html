@@ -81,10 +81,12 @@
 
 <header>
   <svg class="mark" width="52" height="52" viewBox="0 0 1024 1024" aria-hidden="true">
-    <rect width="1024" height="1024" rx="225" fill="#1E2227"/>
-    <path d="M292 190 H620 L772 342 V782 A52 52 0 0 1 720 834 H292 A52 52 0 0 1 240 782 V242 A52 52 0 0 1 292 190 Z" fill="#FFC81E"/>
-    <path d="M620 190 V290 A52 52 0 0 0 672 342 H772 Z" fill="#E0A800"/>
-    <path d="M340 560 L452 672 L690 424" fill="none" stroke="#1E2227" stroke-width="72" stroke-linecap="round" stroke-linejoin="round"/>
+    <defs>
+      <linearGradient id="mark-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A3037"/><stop offset="1" stop-color="#15181C"/></linearGradient>
+      <linearGradient id="mark-w" gradientUnits="userSpaceOnUse" x1="340" y1="0" x2="690" y2="0"><stop offset="0" stop-color="#C24C0A"/><stop offset="1" stop-color="#FF8A3D"/></linearGradient>
+    </defs>
+    <rect width="1024" height="1024" rx="225" fill="url(#mark-bg)"/>
+    <path transform="translate(-18,22)" d="M200 400L355 660L512 400L667 660L860 320" fill="none" stroke="url(#mark-w)" stroke-width="112" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
   <div>
     <h1>Wellseen</h1>
