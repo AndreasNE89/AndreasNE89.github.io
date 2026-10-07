@@ -5,6 +5,7 @@ Public privacy, support and contact pages for all apps, served at <https://andre
 | App | Pages |
 | --- | --- |
 | Pryglass (formerly Signal/Block) | `/pryglass/` (about, privacy, support); `/signal-block/` redirects there |
+| Repbook Iron Plan | `/repbook/` (home), `/repbook/privacy.html`, `/repbook/support.html`; source in the RepbookIronPlan repo, `Repbook-android/store/site/` |
 | Dioptra | `/dioptra/privacy.html` (privacy), `/dioptra/support.html`; `/dioptra/` carries the same policy text (see below) |
 | Clipwell | `/clipwell/` (privacy, generated from the clipwell repo), `/clipwell/plus.html` |
 | StampStack | `/quell/privacy-policy.html`, `/quell/attributions.html` |

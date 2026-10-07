@@ -1,0 +1,183 @@
+<!doctype html>
+<!--
+    https://andreasne89.github.io/repbook/: the home page of Repbook Iron Plan (the Play listing's
+    website). Publish this folder (index.html, support.html, privacy.html) to the root of the
+    GitHub repository "repbook" with GitHub Pages on. Every page is self-contained: no scripts, no
+    external styles or fonts. Say only what both apps have, or name the platform.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repbook Iron Plan · Workout log</title>
+<meta name="description" content="Repbook Iron Plan is a simple, fast workout log for people who lift weights. Routines, set logging, next-set guidance, rest timer, progress and records. No account, no ads.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='18%2018%2072%2072'%3E%3Crect%20x='18'%20y='18'%20width='72'%20height='72'%20rx='16'%20fill='%23121212'/%3E%3Cpath%20d='M35.98,41.38A22,22%200%200,1%2072.02,41.38M72.02,66.62A22,22%200%200,1%2035.98,66.62'%20fill='none'%20stroke='%23E5262B'%20stroke-width='2'%20stroke-linecap='round'/%3E%3Cpath%20d='M37,52.6h34v2.8h-34zM33.2,45.2h4.4v17.6h-4.4zM70.4,45.2h4.4v17.6h-4.4zM29.6,48.6h3.6v10.8h-3.6zM74.8,48.6h3.6v10.8h-3.6zM26.6,52.4h3v3.2h-3zM78.4,52.4h3v3.2h-3z'%20fill='%23F2F2F2'/%3E%3C/svg%3E">
+<style>
+    :root {
+        color-scheme: light dark;
+        --bg: #EBF5FA;
+        --card: #F7FCFC;
+        --ink: #213030;
+        --muted: #4F6666;
+        --link: #2F6656;
+        --rule: rgba(79, 102, 102, 0.20);
+        --chip: #D1F7EB;
+        --chip-ink: #122120;
+        --hero-a: #4E8C79;
+        --hero-b: #234A3F;
+        --hero-ink: #F7FCFC;
+        --hero-sub: #D1F7EB;
+        --gold: #D1B880;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #121514;
+            --card: #1A1F1C;
+            --ink: #E8E8DB;
+            --muted: #C9CFBF;
+            --link: #D1B880;
+            --rule: rgba(232, 232, 219, 0.14);
+            --chip: #2E5245;
+            --chip-ink: #E8FAF0;
+            --hero-a: #2E5245;
+            --hero-b: #17302A;
+        }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+
+    header { padding: 20px 0 8px; }
+
+    nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 15px; }
+
+    nav a[aria-current="page"] { color: var(--ink); font-weight: 600; text-decoration: none; }
+
+    .hero {
+        background: linear-gradient(135deg, var(--hero-a), var(--hero-b));
+        color: var(--hero-ink);
+        border-radius: 24px;
+        padding: 28px 24px;
+        margin: 12px 0 20px;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+    }
+
+    .hero svg { width: 96px; height: 96px; flex: none; border-radius: 22px; }
+
+    .hero h1 { font-size: 34px; line-height: 1.1; margin: 0; }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p { margin: 8px 0 0; color: var(--hero-sub); font-size: 18px; }
+
+    main section {
+        background: var(--card);
+        border: 1px solid var(--rule);
+        border-radius: 20px;
+        padding: 6px 20px 16px;
+        margin: 0 0 16px;
+    }
+
+    h2 { font-size: 21px; line-height: 1.3; margin: 18px 0 6px; }
+
+    p, ul { margin: 10px 0; }
+
+    ul { padding-left: 22px; }
+
+    li { margin: 4px 0; }
+
+    a { color: var(--link); text-underline-offset: 2px; overflow-wrap: anywhere; }
+
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 6px; padding: 0; list-style: none; }
+
+    .links a {
+        display: inline-block;
+        background: var(--chip);
+        color: var(--chip-ink);
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    footer { color: var(--muted); font-size: 14px; padding: 4px 0 32px; }
+
+    @media (max-width: 480px) {
+        body { font-size: 16px; }
+        .hero { flex-direction: column; align-items: flex-start; padding: 22px 18px; gap: 16px; }
+        .hero svg { width: 72px; height: 72px; border-radius: 16px; }
+        .hero h1 { font-size: 30px; }
+        main section { padding: 4px 16px 14px; border-radius: 16px; }
+    }
+</style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <nav aria-label="Site">
+            <a href="./" aria-current="page">Home</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <svg viewBox="18 18 72 72" role="img" aria-label="Repbook Iron Plan icon">
+            <rect x="18" y="18" width="72" height="72" fill="#121212"/>
+            <path d="M35.98,41.38 A22,22 0 0,1 72.02,41.38 M72.02,66.62 A22,22 0 0,1 35.98,66.62" fill="none" stroke="#E5262B" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M37,52.6h34v2.8h-34z M33.2,45.2h4.4v17.6h-4.4z M70.4,45.2h4.4v17.6h-4.4z M29.6,48.6h3.6v10.8h-3.6z M74.8,48.6h3.6v10.8h-3.6z M26.6,52.4h3v3.2h-3z M78.4,52.4h3v3.2h-3z" fill="#F2F2F2"/>
+        </svg>
+        <div>
+            <h1>Repbook <span>Iron Plan</span></h1>
+            <p>A simple, fast workout log for people who lift weights.</p>
+        </div>
+    </div>
+
+    <main>
+        <section>
+            <h2>Log every set. See your strength grow.</h2>
+            <ul>
+                <li>Save routines with the sets, reps, weight and rest you use most, from a library of 135 exercises or your own.</li>
+                <li>Log a workout set by set, with next-set guidance from your recent sets and a rest timer after every set.</li>
+                <li>Follow your progress: workouts this week, personal records, weekly volume and the exercises improving most.</li>
+                <li>Kilograms or pounds, light or dark.</li>
+                <li>No account, no ads, no tracking. Your training log stays on your devices.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>iPhone, Apple Watch and Android</h2>
+            <p>Repbook Iron Plan is on the App Store for iPhone, with an Apple Watch app for logging at the gym. On Android phones it is on <a href="https://play.google.com/store/apps/details?id=com.andreasengebretsen.repbook">Google Play</a>, where the app is called Repbook on your home screen, in English and Norwegian.</p>
+            <p>A backup file moves your whole training log between them: export it on one phone and restore it on the other.</p>
+            <p>On Android, Repbook Pro is a one-time purchase through Google Play that adds your estimated 1-rep max over time, your heaviest weight at each rep count and a spreadsheet export. Everything else works without it.</p>
+        </section>
+
+        <section>
+            <h2>Help and privacy</h2>
+            <p>Questions or problems: <a href="mailto:andreas.nelvik.engebretsen@gmail.com">andreas.nelvik.engebretsen@gmail.com</a>.</p>
+            <ul class="links">
+                <li><a href="support.html">Support</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Repbook Iron Plan is made by Andreas Nelvik Engebretsen, an independent developer in Norway.</p>
+    </footer>
+</div>
+</body>
+</html>
