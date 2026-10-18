@@ -105,8 +105,9 @@
 
       <details id="more">
         <summary>Where are the options, blocked domains and watched sites?</summary>
-        <p>Choose <strong>More</strong> at the top right of the popup. It has <strong>Blocked domains</strong>, <strong>Watched sites</strong>, <strong>Options</strong>, <strong>This page</strong> (<strong>Copy data (JSON)</strong> and <strong>Clear list</strong>), <strong>Your data</strong> (<strong>Delete saved history</strong>) and <strong>About Pryglass</strong> (version, <strong>Help and support</strong>, <strong>Privacy policy</strong> and <strong>Rate Pryglass</strong>). Choose <strong>Done</strong> to go back.</p>
+        <p>Choose <strong>More</strong> at the top right of the popup. It has <strong>Protection</strong>, <strong>Blocked domains</strong>, <strong>Watched sites</strong>, <strong>Options</strong>, <strong>This page</strong> (<strong>Copy summary</strong>, <strong>Copy data (JSON)</strong> and <strong>Clear list</strong>), <strong>Your data</strong> (<strong>Delete saved history</strong>) and <strong>About Pryglass</strong> (version, <strong>Help and support</strong>, <strong>Privacy policy</strong> and <strong>Rate Pryglass</strong>). Choose <strong>Done</strong> to go back.</p>
         <p>The options are <strong>Group repeats</strong>, <strong>Hide minor items</strong> (hides one-off routine requests to the site itself and basic device reads; high-sensitivity and noteworthy events are always shown), <strong>Expand all cards</strong> and <strong>Spot unusual visits</strong>.</p>
+        <p><strong>1.3:</strong> <strong>Protection</strong> is the first section in <strong>More</strong>; <strong>Search</strong> now sits beside the Activity heading, and <strong>Watch site</strong> is in <strong>Insights</strong>.</p>
       </details>
 
       <details>
@@ -137,14 +138,14 @@
 
       <details>
         <summary>Do watched sites get checked in the background?</summary>
-        <p>No. <strong>Watch site</strong> (under the trust score) adds a site to <strong>More &gt; Watched sites</strong>. Changes on a watched site are highlighted when you open Pryglass there. Pryglass never visits sites by itself.</p>
+        <p>No. <strong>Watch site</strong> (in <strong>Insights</strong>) adds a site to <strong>More &gt; Watched sites</strong>. Changes on a watched site are highlighted when you open Pryglass there. Pryglass never visits sites by itself.</p>
       </details>
 
       <h3 id="blocking">Blocking</h3>
 
       <details id="still-loads">
         <summary>I blocked a tracker, but some requests still load</summary>
-        <p>To block, open <strong>Insights</strong> and choose <strong>Block on this site</strong> or <strong>Block on all sites</strong> under <strong>Third parties on this page</strong> or <strong>Top trackers</strong>. Your blocked domains are listed in <strong>More &gt; Blocked domains</strong>. Pryglass gives your rules to Safari, and Safari does the blocking. Some requests can still get through or still appear:</p>
+        <p>For every tracker the page contacted, use <strong>Block N trackers</strong> on the verdict card and confirm once. For one domain, open <strong>Insights</strong> and choose <strong>Block on this site</strong> or <strong>Block on all sites</strong> under <strong>Third parties on this page</strong> or <strong>Top trackers</strong>, or use the same buttons in an expanded tracker event. Your blocked domains are listed in <strong>More &gt; Blocked domains</strong>. Pryglass gives your rules to Safari, and Safari does the blocking. Some requests can still get through or still appear:</p>
         <ul>
           <li><strong>Rules still applying.</strong> If Pryglass says "Applying your blocked domains…" or "Safari couldn't apply your blocked domains.", wait a moment, reload the page, and try again. "Blocking isn't available in this Safari version." means your Safari can't apply these rules. Safari also has a limit on the number of rules; if it is reached, Pryglass tells you how many blocked domains aren't applied.</li>
           <li><strong>Requests from before the block.</strong> Requests the page made before you added the rule stay in the list for that tab. Reload the page after blocking.</li>
@@ -157,9 +158,20 @@
         <p>To lift a block, choose <strong>Unblock</strong> or <strong>Unblock on all sites</strong>. For a domain blocked on all sites, <strong>Allow on this site</strong> lifts the block on just the current site. You can also manage all your blocked domains in <strong>More &gt; Blocked domains</strong>. <strong>Unblock all</strong> asks first and can be undone for a few seconds.</p>
       </details>
 
+      <details id="protection">
+        <summary>What is Protection?</summary>
+        <p><strong>More &gt; Protection</strong> is an optional switch, off by default, that adds a local list of 105 known ad, analytics and session-recording domains as blocks on every site. A Protection rule never applies on the blocked company's own site. Domains that would break sign-in or chat (for example Meta, TikTok, HubSpot, Intercom and Branch) are left out.</p>
+        <p>Protection uses the same Safari rules as your own blocks, so you can see and remove every domain in <strong>More &gt; Blocked domains</strong>. <strong>Pause on this site</strong> lifts the baseline for the site you are on while keeping blocks you chose yourself; <strong>Resume on this site</strong> puts it back. Turning Protection off removes its global rules and keeps your site-specific blocks.</p>
+      </details>
+
+      <details>
+        <summary>Protection broke a site. What should I do?</summary>
+        <p>Open Pryglass on that site, choose <strong>More &gt; Protection</strong> and press <strong>Pause on this site</strong>, then reload. Your own blocks stay. If a single domain is the problem, open <strong>Blocked domains</strong> and unblock it there. Turning Protection off is the broadest option; it keeps any site-specific blocks you made.</p>
+      </details>
+
       <details>
         <summary>Do I still need my ad blocker?</summary>
-        <p>Pryglass isn't an ad blocker and has no built-in block list. It shows what pages do and lets you block the trackers you choose. It works alongside ad and content blockers.</p>
+        <p>Pryglass is not a filter-list ad blocker, but 1.3 adds <strong>Protection</strong>, an optional built-in list of known tracker domains. It downloads no lists and does not block ads beyond those domains. It shows what pages do and lets you block the trackers you choose, and it works alongside ad and content blockers.</p>
       </details>
 
       <h3 id="data">Privacy and your data</h3>
@@ -176,6 +188,7 @@
           <li><strong>This page's list:</strong> <strong>This page &gt; Clear list</strong>. Saved history isn't affected.</li>
           <li><strong>All saved history:</strong> <strong>Your data &gt; Delete saved history</strong>. Your blocked domains, watched sites and settings are kept.</li>
           <li><strong>Unusual-visit samples only:</strong> turn off <strong>Options &gt; Spot unusual visits</strong>.</li>
+          <li><strong>Protection:</strong> turn it off in <strong>More &gt; Protection</strong> to remove its global rules, or use <strong>Pause on this site</strong> for one site. Your own site-specific blocks stay.</li>
           <li><strong>Blocked domains:</strong> <strong>Unblock</strong> one, or <strong>Unblock all</strong>, in <strong>Blocked domains</strong>.</li>
           <li><strong>Watched sites:</strong> <strong>Remove</strong> in <strong>Watched sites</strong>.</li>
           <li><strong>Everything:</strong> use <strong>Delete saved history</strong>, then remove the app. On Mac you can also uninstall it in <strong>Safari &gt; Settings &gt; Extensions</strong>.</li>

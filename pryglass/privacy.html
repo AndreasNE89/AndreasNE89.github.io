@@ -31,8 +31,8 @@
     </nav>
 
     <main id="main">
-      <!-- UPDATE AT RELEASE: set the date to the day version 1.2 is released on the App Store. -->
-      <p class="updated">Last updated: September 23, 2026 · Applies to Pryglass version 1.2 and later</p>
+      <!-- UPDATE AT RELEASE: set the date to the day version 1.3 is released on the App Store. -->
+      <p class="updated">Last updated: October 18, 2026 · Applies to Pryglass version 1.3 and later</p>
 
       <section class="card summary" aria-labelledby="short">
         <h2 id="short">The short version</h2>
@@ -166,8 +166,8 @@
           <tr>
             <th scope="row">Blocked domains</th>
             <td data-label="What it contains">
-              The tracker domains you chose to block, the sites where each rule applies or is lifted, and when each rule
-              last changed (at most 1,000 blocked domains).
+              The tracker domains you chose to block, the domains in the optional Protection list, the sites where each
+              rule applies or is lifted, and when each rule last changed (at most 1,000 blocked domains).
             </td>
             <td data-label="Where and how long">
               Local storage, and handed to Safari as content-blocking rules (<a href="#blocking">section 5</a>). Until you remove them.
@@ -192,12 +192,13 @@
       </p>
       <p>
         When you update to version 1.2, Pryglass deletes the site history saved by earlier versions, because that
-        older format could contain full addresses. Your block list is carried over.
+        older format could contain full addresses. Your block list is carried over. Version 1.3 adds the optional
+        Protection list described in <a href="#blocking">section 5</a>; it does not change how site history is saved.
       </p>
 
       <h2 id="not-collected">3. What is not collected</h2>
       <ul>
-        <li><strong>Nothing leaves your device.</strong> Pryglass has no server and contains no code that sends data anywhere. Its knowledge of trackers and companies is built into the app; it downloads no lists.</li>
+        <li><strong>Nothing leaves your device.</strong> Pryglass has no server and contains no code that sends data anywhere. Its knowledge of trackers and companies, including the optional Protection list, is built into the app; it downloads no lists.</li>
         <li><strong>No account</strong>, no name, email address or other identifier is asked for or created.</li>
         <li><strong>No analytics, advertising, tracking, crash-reporting or third-party SDKs.</strong></li>
         <li><strong>Nothing you type.</strong> Pryglass never reads the contents of form fields, passwords, payment details or messages.</li>
@@ -230,8 +231,8 @@
         </li>
         <li>
           <strong>Declarative content blocking (<code>declarativeNetRequest</code>).</strong> Lets Pryglass hand your
-          block list to Safari as rules, and Safari itself applies them. This permission does not let Pryglass read
-          your requests or their contents.
+          block list, including the Protection list when it is on, to Safari as rules, and Safari itself applies them.
+          This permission does not let Pryglass read your requests or their contents.
         </li>
       </ul>
       <p>
@@ -241,10 +242,13 @@
 
       <h2 id="blocking">5. Blocking</h2>
       <p>
-        When you block a tracker, Pryglass turns your choice into a content-blocking rule and gives it to Safari, which
-        stops matching requests before they are made. The rules contain only the tracker domain and the site domains you
-        chose. Pryglass ships with no block list of its own and downloads none; nothing is blocked until you choose to.
-        Removing a rule, or removing the app, removes the rule from Safari.
+        When you block a tracker, or turn on Protection, Pryglass turns the choice into content-blocking rules and
+        gives them to Safari, which stops matching requests before they are made. The rules contain only the tracker
+        domains and the site domains involved. Protection is a list of known ad, analytics and session-recording domains
+        built into the app; it downloads nothing, is off until you turn it on, and becomes ordinary global rules. A
+        Protection rule never applies on the blocked domain's own site. You can pause Protection on one site, which
+        records an exception, or turn it off, which removes its global rules and keeps any site-specific blocks you made
+        yourself. Removing a rule, or removing the app, removes the rule from Safari.
       </p>
 
       <h2 id="private">6. Private Browsing</h2>
@@ -274,6 +278,7 @@
           change alerts, the tracker overview and unusual-visit samples on that device. It keeps your blocked domains,
           watched sites and settings, and tells you so before you confirm.
         </li>
+        <li><strong>Turn off Protection</strong> in <strong>More &gt; Protection</strong> to remove its global rules and keep your site-specific blocks. <strong>Pause on this site</strong> records an exception for the current site; choose <strong>Resume on this site</strong> to undo it.</li>
         <li><strong>Remove blocked domains</strong> in <strong>More &gt; Blocked domains</strong>, one by one with <strong>Unblock</strong> or all at once with <strong>Unblock all</strong>. <strong>Remove watched sites</strong> in <strong>More &gt; Watched sites</strong> with <strong>Remove</strong>.</li>
         <li><strong>Turn off Spot unusual visits</strong> in <strong>More &gt; Options</strong> to delete its samples and stop collecting them.</li>
         <li>
