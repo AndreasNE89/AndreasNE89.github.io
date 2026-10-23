@@ -117,7 +117,7 @@
   </svg>
   <div>
     <h1>Dioptra — Privacy Policy</h1>
-    <p>Last updated 23 October 2026</p>
+    <p>Last updated 24 October 2026</p>
   </div>
 </header>
 
@@ -172,12 +172,28 @@ sends file names, file contents, or anything else off your device.</p>
 
 <h2 id="map-history">Map history</h2>
 <p>From version 1.4, when a Space map of your home folder or of a folder you have
-granted finishes, Dioptra keeps the sizes it measured: the names and sizes of
-the folders and files one and two levels down, the disk's name, size and how
-full it was, and the date. It is kept in Dioptra's own private container on
-your Mac so that a later version can show what grew. It never leaves your Mac
-and is never sent anywhere. Settings &#9656; General &#9656; Forget Map History&hellip;
-deletes all of it.</p>
+granted finishes, Dioptra writes down what it measured, so that a later
+version can show what grew. For each map it keeps:</p>
+<ul>
+  <li>the date, and the full path of the folder that was mapped;</li>
+  <li>the names and sizes of the folders and files one and two levels inside it &mdash;
+  at most the 20,000 largest, with a note when there were more and the rest
+  were left out;</li>
+  <li>the folder&rsquo;s total size and how many items were measured;</li>
+  <li>the disk the folder is on: its name, its volume UUID (the identifier macOS
+  gives each disk), its size, how full it was, and whether it is your startup
+  disk;</li>
+  <li>whether hidden files were counted, whether some folders could not be read,
+  and whether the map stopped early at its limit on how many items it measures.</li>
+</ul>
+<p>A map that stopped early keeps only the disk reading, the date and those
+notes: no names and no sizes. For each folder, Dioptra keeps its first map
+and the last map of each of the 12 most recent days that had one. If a
+history file cannot be read, it is set aside beside the new one rather than
+written over.</p>
+<p>All of it is kept in Dioptra&rsquo;s own private container on your Mac. It never
+leaves your Mac and is never sent anywhere. Settings &#9656; General &#9656;
+Forget Map History&hellip; deletes all of it, including anything set aside.</p>
 
 <h2 id="purchases">Purchases</h2>
 <p>From version 1.3 Dioptra is free to download, with one optional in-app
