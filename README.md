@@ -11,6 +11,7 @@ Public privacy, support and contact pages for all apps, served at <https://andre
 | StampStack | `/quell/privacy-policy.html`, `/quell/attributions.html` |
 | Brolly | `/brolly-privacy/` |
 | X Country Block | `/x-country-block/privacy.html` |
+| Kinglet | `/kinglet/support.html`, `/kinglet/privacy.html`; source text in the Kinglet (Wren) repo, `docs/support.md` and `docs/privacy-policy.md`. They load nothing: a `Content-Security-Policy` of `default-src 'none'` and the icon inline |
 
 Paths match the URLs already used in store listings — do not rename them without adding a redirect.
 
