@@ -110,16 +110,17 @@
   <li>Inspections, checklist items and their Pass, Fail or N/A status.</li>
   <li>Values you enter for items, such as meter readings and the number of keys.</li>
   <li>Notes, photo captions and written report summaries.</li>
-  <li>Photos you take or add, the time each photo was taken, and marked-up copies of them. Photos are marked up only on iPhone and iPad; the Android app keeps a marked-up photo from a backup as it is.</li>
+  <li>Photos you take or add, the time each photo was taken, and marked-up copies of them.</li>
   <li>For a finished inspection: the names, roles and drawn signatures of the people who signed, when each of them signed, and the signed PDF reports.</li>
   <li>Your custom checklist templates.</li>
-  <li>Your details for reports: on iPhone and iPad your name, contact details, an optional business name, logo and signature (Settings › Your Details); on Android the name, contact details, business name and logo you give each inspection.</li>
-  <li>App settings: on iPhone and iPad for example paper size and the last known status of Wellseen Pro, so Pro features work at once when the app opens; on Android whether you have seen the introduction and the role you signed with last.</li>
+  <li>Your details for reports: your name, contact details, an optional business name, logo and signature (Settings › Your Details).</li>
+  <li>Reminders you set on inspections, and the letters you write from a finished inspection.</li>
+  <li>App settings: for example the report options you chose last, the phrases you used recently in notes, and the last known status of Wellseen Pro, so Pro features work at once when the app opens.</li>
 </ul>
 <p>None of this is sent to me or to anyone else by the app.</p>
 
 <h2 id="collection">Data collection</h2>
-<p>Wellseen does not collect data. It includes no analytics or advertising SDKs, does not track you across apps or websites, and makes no network requests of its own. Its App Store privacy label is “Data Not Collected”, and its Google Play Data safety section says that no data is collected or shared. The Android app does not have permission to use the internet, and it does not use the Android advertising ID.</p>
+<p>Wellseen does not collect data. It includes no analytics or advertising SDKs, does not track you across apps or websites, and makes no network requests of its own. Its App Store privacy label is “Data Not Collected”, and its Google Play Data safety section says that no data is collected or shared. The Android app does not use the Android advertising ID. It has the internet permission only because Google Play's billing library needs it to sell Wellseen Pro; Wellseen itself sends nothing over it.</p>
 <p>The App Store and Google Play install and update the app. Wellseen sends them nothing you enter in the app.</p>
 <p><strong>iPhone and iPad:</strong> If you have chosen in the Settings app to share analytics with Apple and with app developers, Apple may pass crash reports and usage statistics about Wellseen on to me. They do not identify you, and you can turn this off in Settings › Privacy &amp; Security › Analytics &amp; Improvements.</p>
 <p><strong>Android:</strong> If you have allowed your Android device to share usage and diagnostics data with Google, Google Play may show me statistics about how stable Wellseen is, such as crashes and times the app stopped responding (Google calls this Android vitals). Google shows them only when there is enough data to keep the reports anonymous, and they do not identify you. You can turn this off in your device's Google settings (on many devices, Settings › Google › Usage &amp; diagnostics).</p>
@@ -134,18 +135,18 @@
 
 <h2 id="camera">Camera and photos</h2>
 <p><strong>iPhone and iPad:</strong> Wellseen asks for camera access the first time you take an inspection photo. Existing photos come through the iOS photo picker, which gives Wellseen only the photos you choose, so the app never asks for access to your photo library. The photos stay in the app.</p>
-<p><strong>Android:</strong> Wellseen asks for no permissions. Camera opens your phone's own camera app, which hands the photo you take to Wellseen. Library opens the Android photo picker (or the system file picker on older devices), and Wellseen receives only the photos you choose. It cannot see your other photos. The photos are saved in the app.</p>
+<p><strong>Android:</strong> Wellseen asks for no permission for photos. Camera opens your phone's own camera app, which hands the photo you take to Wellseen. Library opens the Android photo picker (or the system file picker on older devices), and Wellseen receives only the photos you choose. It cannot see your other photos. The photos are saved in the app.</p>
 
-<h2 id="notifications">Notifications (iPhone and iPad)</h2>
-<p>If you set a reminder on an inspection, Wellseen asks to send you notifications. It asks only when you set the first reminder. Reminders are scheduled on your device by iOS; nothing about them is sent to a server. The Android app has no reminders and sends no notifications.</p>
+<h2 id="notifications">Notifications</h2>
+<p>If you set a reminder on an inspection, Wellseen asks to send you notifications. It asks only when you add a reminder, or when you tap Turn On Notifications for reminders that came back with a restored backup. Reminders are scheduled on your device by iOS or Android; nothing about them is sent to a server. On Android, Wellseen asks for the notification permission (Android 13 and later) at the same moments, and schedules the reminders again after the phone restarts. A notification shows the inspection's title. Delivered notifications are removed when their inspection is deleted or when you use Reset Local Data.</p>
 
-<h2 id="microphone-dictation-and-writing-help-iphone-and-ipad">Microphone, dictation and writing help (iPhone and iPad)</h2>
+<h2 id="microphone-dictation-and-writing-help">Microphone, dictation and writing help</h2>
 <p>On supported devices you can dictate notes, polish a note, and draft a report summary. All of this runs on your device, using the speech recognition and language models built into iOS. Audio is not recorded or stored, and neither your speech nor your text is sent to any server. The first time you dictate, iOS may download its speech model for your language. Wellseen asks for microphone access only when you tap Dictate.</p>
-<p>The Android app has no dictation or writing help and never uses the microphone.</p>
+<p><strong>Android:</strong> On Android 12 and later, where the phone can recognise speech on the device, you can dictate notes. Wellseen asks for microphone access only when you tap Dictate. Speech is recognised by Android on the device; audio is not recorded or stored and is not sent anywhere by Wellseen. Android may download its speech model for your language the first time. Writing help on Android (polishing a note, a note from a photo, the report summary and wording a letter) would run only with the on-device model built into some Android phones (Gemini Nano through Android AICore), never a cloud model; the current version does not include it yet.</p>
 
-<h2 id="purchases">Purchases (iPhone and iPad)</h2>
+<h2 id="purchases">Purchases</h2>
 <p>Wellseen Pro is sold through Apple's in-app purchase system. Payment is handled by Apple under Apple's own terms and privacy policy. The app never sees your payment details or your Apple Account. It receives only the status of your purchase (which Pro plan is active and until when) from Apple on your device, and uses it to unlock Pro features. Nothing about your purchase is stored anywhere else or sent to me. Restore Purchases asks Apple for purchases already made with your Apple Account. Pro subscriptions follow Apple's standard <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noreferrer">Licensed Application End User License Agreement</a>.</p>
-<p>The Android app is free and has no purchases.</p>
+<p><strong>Android:</strong> Wellseen Pro is sold through Google Play's billing system under your Google Account and Google's own terms and privacy policy. The app never sees your payment details. It asks Google Play on your device which Pro plan you have, keeps only the name of that plan on the device so Pro works at once when the app opens, and sends nothing about your purchase to me. There is no Wellseen account and no server.</p>
 
 <h2 id="keeping-your-data-safe">Keeping your data safe</h2>
 <p>Wellseen keeps its data in the app's private storage, which other apps cannot read, and your device's own lock and encryption protect it. A signed report is stored as it was signed and is not changed afterwards.</p>
