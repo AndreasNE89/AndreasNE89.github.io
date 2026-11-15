@@ -29,45 +29,66 @@
     </style>
   </head>
   <body>
-    <!-- SOURCE OF TRUTH. Two copies are derived from this file:
-           * dist/privacy.html — bundled into the extension by scripts/build.mjs
+    <!-- SOURCE OF TRUTH, for every browser Brolly ships to. Copies derived from this file:
+           * dist/privacy.html and dist-firefox/privacy.html — bundled into the Chrome and the
+             Firefox build by scripts/build.mjs
            * brolly-privacy/index.html in the public hub repo AndreasNE89/AndreasNE89.github.io,
-             served at https://andreasne89.github.io/brolly-privacy/ (the URL the Web Store
-             requires; Pages needs a public repo and this one is private)
+             served at https://andreasne89.github.io/brolly-privacy/ (the URL the Chrome Web
+             Store and addons.mozilla.org listings give; Pages needs a public repo and this one
+             is private)
+         It is deliberately ONE browser-neutral policy, not one per browser: where the browsers
+         differ (sync provider, the Origin header, Firefox's data-collection consent) it says
+         so in place. Keep it consistent with the Firefox manifest's
+         browser_specific_settings.gecko.data_collection_permissions.
          Edit here, then run `npm run privacy:sync`, or the hosted policy drifts from
          the one inside the extension. -->
     <h1>Brolly — Privacy Policy</h1>
-    <p class="updated">Last updated: 29 September 2026</p>
+    <p class="updated">Last updated: 14 November 2026</p>
 
     <p class="lede">
       Brolly has no accounts, no advertising, no analytics, and no trackers. Weather
       and city-search requests go to a single server of ours; this page explains each
       of them, and exactly what each one contains. The one exception is the optional
       one-time upgrade, which is handled by a payment service, ExtensionPay
-      (extensionpay.com). The extension contacts ExtensionPay only after you have
-      opened the upgrade's checkout page or its login page, and those requests are
-      described under &ldquo;The optional purchase&rdquo; below. If you never open
-      either page, nothing Brolly stores identifies your install. If you do,
+      (extensionpay.com). The extension contacts ExtensionPay only after the
+      upgrade's checkout page or its login page has been opened, on this computer or on
+      another one whose key your browser's sync has copied here, and those requests are
+      described under &ldquo;The optional purchase&rdquo; below. If neither page has been
+      opened, nothing Brolly stores identifies your install. (In Firefox, the browser
+      itself adds an identifier for the installation to every request; see &ldquo;The
+      requests it makes&rdquo;.) If one has,
       ExtensionPay issues a random key for this install, which is kept in your
       browser; if you then buy, the email address you paid with is kept there too.
       Those two are the only identifiers Brolly ever holds, and the email is the only
       personal information. Both are in the table below.
     </p>
+    <p>
+      Brolly is available for Chrome (and other browsers that install from the Chrome Web
+      Store) and for Firefox. This policy covers both. Where the two browsers behave
+      differently, it says so.
+    </p>
 
     <h2>What the extension stores, and where</h2>
     <p>
-      Everything is stored in your browser, using Chrome's own extension storage. No
-      copy of it is uploaded to us. Two stored items do take part in requests to our
+      Everything is stored in your browser, using the browser's own extension storage, in two
+      areas: <code>storage.local</code>, which stays on this device, and
+      <code>storage.sync</code>, which your browser may copy to your account, as described
+      at the end of this paragraph. No copy of either is uploaded to us. Two stored items do take part in requests to our
       server, and each is described where its request is: the coordinates of a city,
       which are rounded to two decimals before they leave your browser (see
       &ldquo;On precision&rdquo; below), and the publication time of the forecast you
       already hold, which is sent back exactly as it is stored (see &ldquo;The requests
       it makes&rdquo;). The only stored item Brolly sends to anyone other than us is the
       payment library's key, which goes to ExtensionPay and only to ExtensionPay, as
-      described under &ldquo;The optional purchase&rdquo;. If
-      Chrome Sync is on, Chrome copies whatever is in <code>chrome.storage.sync</code>
-      to your Google account so your other computers receive it; that copy is handled
-      by Google under its own privacy policy, not by us.
+      described under &ldquo;The optional purchase&rdquo;. Whether
+      <code>storage.sync</code> leaves this device is decided by your browser's own sync
+      feature, not by Brolly. In Chrome, if Chrome Sync is on, Chrome copies whatever is in
+      <code>storage.sync</code> to your Google account so your other computers receive it;
+      that copy is handled by Google under its own privacy policy. In Firefox, the same
+      happens only if you are signed in to Firefox Sync with a Mozilla account and have
+      ticked Add-ons among the things it syncs; that copy is handled by Mozilla under its own
+      privacy policy. If sync is off, <code>storage.sync</code> stays on this device. Either
+      way, the copy is not made by us and does not reach us.
     </p>
     <table>
       <tr><th>Data</th><th>Where</th><th>Why</th></tr>
@@ -76,16 +97,17 @@
         settings: units, badge appearance, clock format, notifications, Planner
         activities, which one-time hints you have dismissed, and which optional
         features are unlocked</td>
-        <td><code>chrome.storage.sync</code>, mirrored to <code>chrome.storage.local</code></td>
-        <td>So your settings survive a browser restart or a profile move. If you have
-        Chrome Sync enabled, Chrome — not us — may sync this between your own devices.</td>
+        <td><code>storage.sync</code>, mirrored to <code>storage.local</code></td>
+        <td>So your settings survive a browser restart or a profile move. If your
+        browser's sync is on for extensions (Chrome Sync, or Firefox Sync with Add-ons
+        ticked), your browser — not us — may sync this between your own devices.</td>
       </tr>
       <tr>
         <td>The most recent weather data for each of those cities: the forecast, any
         official warnings, the next couple of hours of precipitation, and the
         temperatures behind the warmer-than-yesterday comparison. Also the planetary
         geomagnetic forecast, which is not tied to a city at all.</td>
-        <td><code>chrome.storage.local</code></td>
+        <td><code>storage.local</code></td>
         <td>So the toolbar badge and the popup are correct the instant you look at
         them, without waiting for the network.</td>
       </tr>
@@ -93,14 +115,14 @@
         <td>A short weather memory for each saved city, kept since you added it: the
         warmest reading Brolly has seen there, the dates of the last two frosts, and the
         longest dry spell</td>
-        <td><code>chrome.storage.local</code></td>
+        <td><code>storage.local</code></td>
         <td>So the popup can say things like &ldquo;first frost since March&rdquo;. It
         stays on this device, is never sent anywhere, and is deleted when you remove the
         city.</td>
       </tr>
       <tr>
         <td>The pressure mark you set by tapping the barometer</td>
-        <td><code>chrome.storage.local</code></td>
+        <td><code>storage.local</code></td>
         <td>So the dial can show which way pressure has moved since you set it. It is
         kept per city, on this device only, and is deliberately not synced.</td>
       </tr>
@@ -108,7 +130,7 @@
         <td><strong>If — and only if — you open the upgrade's checkout page or its login
         page:</strong> a random key that ExtensionPay issues for this install, held by the
         payment library (ExtensionPay)</td>
-        <td><code>chrome.storage.sync</code></td>
+        <td><code>storage.sync</code></td>
         <td>It links this browser to the record ExtensionPay keeps of any purchase. It is
         created when you first open either page, whether or not you go on to buy, and it
         is sent only to extensionpay.com, as described under &ldquo;The optional
@@ -118,7 +140,7 @@
         <td><strong>Once that key exists:</strong> ExtensionPay's last answer about it —
         whether it has been paid for and when, and, <strong>if and only if you
         bought</strong>, the email address you paid with — held by the payment library</td>
-        <td><code>chrome.storage.sync</code></td>
+        <td><code>storage.sync</code></td>
         <td>So that the features you bought stay unlocked, and so you can restore them on
         another computer by asking for a login link. Your card details never reach this
         extension or us — payment happens on Stripe's own checkout page. If you never buy
@@ -129,7 +151,7 @@
         was last confirmed, when ExtensionPay was last asked and whether asking failed,
         and — for two hours after you open the checkout or login page — a reminder to ask
         again sooner</td>
-        <td><code>chrome.storage.local</code></td>
+        <td><code>storage.local</code></td>
         <td>So the upgrade keeps working for up to 30 days when ExtensionPay cannot be
         reached, so ExtensionPay is asked about once a day rather than on every refresh,
         and so a purchase you have just made is noticed within minutes. It holds no email
@@ -138,7 +160,7 @@
       <tr>
         <td>The date this extension was installed, written by the payment library
         (ExtensionPay) that handles the optional one-time purchase</td>
-        <td><code>chrome.storage.sync</code></td>
+        <td><code>storage.sync</code></td>
         <td>The library records it so that, if a paid tier is offered, it can tell a new
         install from an old one. It is a date and nothing else — no identifier, no
         address. It is written whether or not anything is for sale, and whether or not
@@ -150,14 +172,14 @@
         each was forecast to last, whether the last refresh for a city failed, when the
         last official-warning check for a city failed, when the last geomagnetic-forecast
         request failed, and whether a settings change is still waiting to be copied to
-        <code>chrome.storage.sync</code></td>
-        <td><code>chrome.storage.local</code></td>
+        <code>storage.sync</code></td>
+        <td><code>storage.local</code></td>
         <td>So a change of home city is noticed and refetched, rather than left showing
         the previous city's temperature; so a notification is not repeated; so the popup
         can tell you when a check failed instead of showing an old reading as though it
         were current; so a request that just failed is not repeated every time you open
-        the popup; and so a settings change that could not reach Chrome Sync is kept and
-        sent again rather than lost.</td>
+        the popup; and so a settings change that could not be written to
+        <code>storage.sync</code> is kept and written again rather than lost.</td>
       </tr>
     </table>
     <p>
@@ -173,9 +195,10 @@
       is finer than the two decimals a request carries, and the difference is
       deliberate: these coordinates identify a town in a public place list rather than
       a position of yours. Brolly never sends them to us or to any weather service:
-      every request rounds to two decimals first, as described below. If Chrome Sync is
-      on, Chrome copies your settings, including these coordinates, to your Google
-      account, as described above.
+      every request rounds to two decimals first, as described below. If your browser's
+      sync is on for extensions, your browser copies your settings, including these
+      coordinates, to your Google account (Chrome Sync) or your Mozilla account (Firefox
+      Sync), as described above.
     </p>
 
     <h2>What we never ask for</h2>
@@ -195,8 +218,12 @@
         the upgrade's checkout or login page, our payment provider issues a random key
         for this install. If you buy Brolly Pro, it also stores the email address you
         used at checkout, so the purchase can be restored on another computer. Those are
-        the only identifiers involved, and both are listed in the table above. If you
-        never open either page, no identifier exists.
+        the only identifiers Brolly creates or stores, and both are listed in the table
+        above. If neither page has been opened, here or on a computer your browser syncs
+        Brolly's storage with, Brolly holds no identifier. In Firefox, the browser also
+        adds an identifier of its own for the installation to every request Brolly makes,
+        as described under &ldquo;The requests it makes&rdquo;; Brolly does not store it,
+        and our server does not record it.
       </li>
     </ul>
 
@@ -228,15 +255,36 @@
       That is everything Brolly puts in a forecast request. Your browser also adds the
       standard headers it attaches to every request: its name and version and your
       operating system (<code>User-Agent</code>), your preferred languages
-      (<code>Accept-Language</code>), and Brolly's extension id (<code>Origin</code>),
-      which is the same for every Brolly user. There is no identifier, no cookie, and
-      nothing linking one request to another.
+      (<code>Accept-Language</code>), and the address of the extension making the request
+      (<code>Origin</code>). What that address contains depends on the browser:
+    </p>
+    <ul>
+      <li>
+        <strong>In Chrome</strong>, and in other browsers that install Brolly from the
+        Chrome Web Store, it is Brolly's extension id, which is the same for every Brolly
+        user.
+      </li>
+      <li>
+        <strong>In Firefox</strong>, it is <code>moz-extension://</code> followed by an
+        identifier that Firefox generates at random when Brolly is installed. It differs
+        from one installation to the next, and it stays the same for as long as that
+        installation exists, so every request from one Firefox installation carries the
+        same value.
+      </li>
+    </ul>
+    <p>
+      Brolly does not choose that value and does not store it. Our server uses it only to
+      refuse requests made by ordinary websites rather than by a browser extension, and it
+      does not record it. Brolly adds no identifier of its own to these requests, and no
+      cookie.
     </p>
     <p>
-      <strong>We keep no logs of it.</strong> The server stores cached forecasts keyed
-      by rounded coordinates — never by IP, and never by user. It sets no cookies. The
-      same request from a hundred people in one town is indistinguishable, because it
-      is literally the same request. The one thing the server counts is how often its
+      <strong>We keep no logs of it.</strong> The server keeps no record of the requests it
+      answers: not the IP address, not the headers listed above, and not the
+      <code>Origin</code> value. It stores cached forecasts keyed by rounded coordinates —
+      never by IP, and never by user. It sets no cookies. A hundred people in one town are
+      answered from the same cached forecast, because what the server looks up is the
+      rounded coordinate, not who asked. The one thing the server counts is how often its
       cache was hit or missed since it last restarted: running totals, held in memory,
       with nothing in them about who asked.
     </p>
@@ -280,7 +328,8 @@
       (<a href="https://extensionpay.com/">extensionpay.com</a>), a payment service for
       browser extensions; the payment itself is taken by Stripe on its own checkout
       page. These are the only requests Brolly makes to anyone other than our own
-      server, and none of them happens until you start it:
+      server, and none of them happens until you start it, on this computer or on one
+      your browser syncs Brolly's storage with:
     </p>
     <ul>
       <li>
@@ -288,7 +337,7 @@
         bought</strong>, and this install has no key yet, the extension asks
         extensionpay.com for one. That request carries nothing else, except that a
         developer's test copy of the extension says it is one. The key that comes back
-        is random, and is kept in <code>chrome.storage.sync</code> as listed in the
+        is random, and is kept in <code>storage.sync</code> as listed in the
         table. The page you asked for then opens on extensionpay.com with that key in
         its address.
       </li>
@@ -299,7 +348,12 @@
         login page, so that a purchase is noticed quickly; when you press Refresh in the
         popup while nothing on record unlocks the paid tier (no purchase, a refund, or a
         purchase not confirmed for 30 days); and, after an attempt that failed, again
-        three hours later. The answer is stored as listed in the table.
+        three hours later. The answer is stored as listed in the table. Because the key is
+        kept in <code>storage.sync</code>, if your browser's sync copies it to another
+        computer where Brolly is installed, Brolly there asks the same question on the same
+        schedule. In Firefox, that question is asked only on a computer where you have
+        agreed to the optional data permissions described under &ldquo;Firefox's
+        data-collection consent&rdquo;.
       </li>
       <li>
         <strong>Without a key, nothing is asked.</strong> The payment library answers
@@ -313,6 +367,42 @@
       issues and of purchases. The checkout and login pages are ExtensionPay's and
       Stripe's own websites, and what you enter there is handled under their own privacy
       policies.
+    </p>
+
+    <h2>Firefox's data-collection consent</h2>
+    <p>
+      Firefox has extensions declare what kinds of data they send, and asks you to agree.
+      Brolly declares the following, and nothing else:
+    </p>
+    <ul>
+      <li>
+        <strong>Location, required.</strong> Firefox asks for this when you install Brolly.
+        It covers the two things described under &ldquo;The requests it makes&rdquo;: the
+        rounded coordinates of the city you chose, which every weather request carries, and
+        the city name you type into the search. Brolly cannot show weather without them,
+        which is why this one is required.
+      </li>
+      <li>
+        <strong>Personally identifying information, and financial and payment information,
+        optional.</strong> Brolly asks Firefox for these only when you click to buy the
+        upgrade or to restore one you already bought, before the checkout or login page
+        opens and before a key is requested; Firefox asks you, unless you have already
+        agreed. They
+        cover what &ldquo;The optional purchase&rdquo; describes: the random key
+        ExtensionPay issues for this install, and ExtensionPay's record of whether you have
+        paid, with the email address you paid with if you bought. Your card details are not
+        among them; they never reach Brolly. If you decline, the checkout or login page
+        does not open, no key is requested, and Brolly works as before without the
+        upgrade. Without your agreement on this computer, Brolly does not contact
+        ExtensionPay from it at all: not about a key that Firefox Sync has copied here from
+        another computer, and not about a key made before you switched these permissions
+        off in Firefox's add-ons settings. Switching them off does not delete such a key,
+        but it is no longer checked.
+      </li>
+    </ul>
+    <p>
+      Chrome has no such prompt. In Chrome, the payment requests are made at the same
+      clicks, without it.
     </p>
 
     <h2>Who else is involved</h2>
@@ -391,6 +481,31 @@
       record.
     </p>
     <ul>
+      <li>
+        <strong>14 November 2026</strong> — Brolly is now available for Firefox as well as
+        Chrome, and this policy covers both. Nothing Brolly sends from Chrome has changed.
+        Four things in the policy are new or rewritten because of Firefox. First, the
+        section on requests used to say that the <code>Origin</code> header is the same for
+        every Brolly user and that nothing links one request to another. That remains true
+        of Chrome, but not of Firefox, where the header carries an identifier Firefox
+        generates at random for each installation and which stays the same for that
+        installation; the section now says what each browser sends, and that our server
+        does not record it. Second, the policy no longer assumes Chrome Sync: it names
+        Chrome Sync with a Google account and Firefox Sync with a Mozilla account, and says
+        when each copies <code>storage.sync</code>. Third, a new section, &ldquo;Firefox's
+        data-collection consent&rdquo;, lists what Brolly declares to Firefox: location,
+        required at install, and personally identifying and financial and payment
+        information, optional and asked for only when you click to buy or restore the
+        upgrade; it also says that, without that agreement, Brolly does not contact
+        ExtensionPay from that Firefox, even about a key copied there by Firefox Sync or
+        made before the permissions were switched off. Fourth, the policy no longer says that no identifier exists unless you open
+        the payment pages: that is true of what Brolly stores, and the policy now adds that
+        Firefox attaches its own installation identifier to every request. One correction
+        applies to both browsers: &ldquo;The optional purchase&rdquo; now says that a key
+        your browser's sync copies to another computer is checked there on the same
+        schedule, and the opening paragraph says the same. That was already so; the policy
+        did not say it.
+      </li>
       <li>
         <strong>29 September 2026</strong> — corrections, and two changes to what the
         extension does.
